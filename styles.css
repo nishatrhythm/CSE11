@@ -1,0 +1,165 @@
+/* Font import and universal font-family declaration */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Reset some default styles for better consistency */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide horizontal overflow to prevent scrolling */
+body {
+    overflow-x: hidden;
+}
+
+/* Navbar styles with animated unique gradient background */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px;
+    animation: animateNavbarBackground 10s infinite linear;
+    background-image: linear-gradient(-45deg, #f06, #9f6, #06f, #f06);
+    background-size: 400% 400%;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the navbar */
+    transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+}
+
+/* Animation for the unique navbar background gradient */
+@keyframes animateNavbarBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Navbar text styles */
+.navbar-text {
+    text-align: center;
+}
+
+/* Initial big text size */
+.big {
+    font-size: 36px;
+    margin-bottom: 10px; /* Add margin between lines */
+}
+
+/* Smaller text size on scroll */
+.small {
+    font-size: 24px;
+    margin-bottom: 10px; /* Add margin between lines */
+}
+
+/* Paragraph text style */
+.navbar p {
+    font-size: 18px;
+}
+
+/* Center-align the student cards */
+.student-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px; /* Add top margin to create a gap */
+}
+
+/* Unique styles for student cards with animation */
+.student-card {
+    background-color: #fff; /* Background color for cards */
+    border: 1px solid #e0e0e0;
+    padding: 15px; /* Reduce padding to make the cards smaller */
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    animation: slideInUp 1s ease, scaleCard 0.5s ease-in-out;
+    width: calc(20% - 20px); /* Five cards side by side on a wide screen */
+    display: flex; /* Add flex display */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text within card */
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.5s, box-shadow 0.5s;
+    backdrop-filter: blur(5px); /* Apply a blur effect to create a glass-like appearance */
+}
+
+/* Style for student image within the card */
+.student-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Add border-radius to round the image corners */
+}
+
+/* Style for student name within the card */
+.student-name {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Style for ID with center alignment */
+.student-id {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Style for School, College, and Hometown with left alignment */
+.student-info {
+    font-size: 16px;
+    text-align: left;
+    margin-top: 5px;
+    padding-left: 20px; /* Add left padding for alignment */
+    display: flex;
+    align-items: center;
+}
+
+/* Style for individual labels (School, College, Home Town) */
+.label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Animation for sliding in cards from below */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for scaling the card on hover */
+@keyframes scaleCard {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Unique hover effect for the student cards */
+.student-card:hover {
+    transform: translateY(-10px) scale(1.05) rotate(-2deg);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+}
