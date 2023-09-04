@@ -87,7 +87,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
     animation: slideInUp 1s ease, scaleCard 0.5s ease-in-out;
-    width: calc(20% - 20px); /* Five cards side by side on a wide screen */
+    width: calc(25% - 20px); /* Three cards side by side on a wide screen */
     display: flex; /* Add flex display */
     flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center content horizontally */
@@ -108,9 +108,10 @@ body {
 /* Style for student name within the card */
 .student-name {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px; /* Adjust the font size as needed */
     margin: 10px 0;
     text-align: center;
+    color: #000; /* Default text color */
 }
 
 /* Style for ID with center alignment */
@@ -122,18 +123,17 @@ body {
 
 /* Style for School, College, and Hometown with left alignment */
 .student-info {
-    font-size: 16px;
-    text-align: left;
+    font-size: 14px;
+    text-align: left; /* Align text to the left */
     margin-top: 5px;
-    padding-left: 20px; /* Add left padding for alignment */
-    display: flex;
-    align-items: center;
+    color: #555; /* Default text color */
 }
 
 /* Style for individual labels (School, College, Home Town) */
 .label {
     font-weight: bold;
     margin-right: 5px;
+    text-align: right; /* Align labels to the right */
 }
 
 /* Animation for sliding in cards from below */
@@ -162,4 +162,22 @@ body {
 .student-card:hover {
     transform: translateY(-10px) scale(1.05) rotate(-2deg);
     box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for social media links */
+.social-links {
+    margin-top: 10px;
+}
+
+/* Style for social media icons */
+.social-links a {
+    color: #007bff; /* Change the color of the icons as needed */
+    font-size: 20px; /* Adjust the size of the icons as needed */
+    margin-right: 10px; /* Add spacing between icons */
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Hover effect for social media icons */
+.social-links a:hover {
+    color: #0056b3; /* Change the hover color as needed */
 }
