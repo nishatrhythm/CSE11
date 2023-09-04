@@ -98,6 +98,44 @@ async function fetchAndGenerateStudentCards() {
         const response = await fetch("students.json"); // Fetch the JSON file
         const students = await response.json(); // Parse the JSON data
 
+        // Add an event listener to the search bar for input events
+        const searchBar = document.getElementById("searchBar");
+        searchBar.addEventListener("input", () => {
+            applyFilters(); // Call the function to apply filters
+        });
+
+        // Function to filter and display students based on filters and search input
+        function applyFilters() {
+            const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
+            const searchValue = searchBar.value.toLowerCase();
+
+            // Filter students based on search input
+            const filteredStudents = students.filter((student) => {
+                const searchData = `${student.name} ${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
+                return searchData.includes(searchValue);
+            });
+
+            // Sort students based on the selected sort order
+            if (sortOrder === "ascending") {
+                filteredStudents.sort((a, b) => a.id - b.id);
+            } else if (sortOrder === "descending") {
+                filteredStudents.sort((a, b) => b.id - a.id);
+            } else if (sortOrder === "random") {
+                filteredStudents.sort(() => Math.random() - 0.5);
+            }
+
+            currentPage = 1; // Reset the current page
+            displayStudents(filteredStudents, currentPage);
+            updatePaginationButtons();
+        }
+
+        // Modify the event listener for the sortOrder dropdown
+        const sortOrderDropdown = document.getElementById("sortOrder");
+        sortOrderDropdown.addEventListener("change", () => {
+            applyFilters(); // Call the function to apply filters
+        });
+
+
         // Function to handle the "Next" button click
         function nextPage() {
             currentPage++;
@@ -127,9 +165,22 @@ async function fetchAndGenerateStudentCards() {
             const prevButton = document.querySelector(".pagination-previous");
             const nextButton = document.querySelector(".pagination-next");
 
+            const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
+            const searchValue = searchBar.value.toLowerCase();
+
+            // Filter students based on search input
+            const filteredStudents = students.filter((student) => {
+                const searchData = `${student.name} ${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
+                return searchData.includes(searchValue);
+            });
+
+            // Sort and update pagination based on the filtered students
+            const totalFilteredStudents = filteredStudents.length;
+
             prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === Math.ceil(students.length / studentsPerPage);
+            nextButton.disabled = currentPage === Math.ceil(totalFilteredStudents / studentsPerPage) || totalFilteredStudents <= studentsPerPage;
         }
+
 
         // Event listeners for pagination buttons
         const prevButton = document.querySelector(".pagination-previous");

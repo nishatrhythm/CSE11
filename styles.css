@@ -67,11 +67,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 20px 0;
+    margin: 30px 0;
     padding: 0 150px;
     margin-bottom: 30px;
-    flex: 1; /* Allow content to grow and fill available space */
-    overflow-y: auto; /* Add vertical scroll if needed for content */
 }
 
 /* Unique styles for student cards with animation */
