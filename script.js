@@ -5,7 +5,7 @@ function createStudentCard(student) {
 
     const image = document.createElement("img");
     image.classList.add("student-image");
-    image.src = `/images/${student.image}.jpg`; // Updated image source
+    image.src = `/images/${student.id}.jpg`;
     image.alt = student.name;
 
     const name = document.createElement("h2");
@@ -14,7 +14,7 @@ function createStudentCard(student) {
 
     const id = document.createElement("p");
     id.classList.add("student-id");
-    id.textContent = `B1903050${student.id.slice(-2)}`; // Extract the last 2 digits of ID
+    id.textContent = `B1903050${student.id}`;
 
     const infoTable = document.createElement("table");
     infoTable.classList.add("student-info");

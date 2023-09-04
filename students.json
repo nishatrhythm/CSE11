@@ -1,8 +1,7 @@
 [
     {
-        "image": "01",
-        "name": "Farhana Akter Suci",
         "id": "01",
+        "name": "Farhana Akter Suci",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Majdee Court, Sadar, Noakhali",
@@ -14,9 +13,8 @@
         }
     },
     {
-        "image": "02",
-        "name": "A. M. Rakib Hasan",
         "id": "02",
+        "name": "A. M. Rakib Hasan",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Brahmman Paiksha, Sreenagar, Munshiganj",
@@ -28,9 +26,8 @@
         }
     },
     {
-        "image": "03",
-        "name": "Nishat Mahmud",
         "id": "03",
+        "name": "Nishat Mahmud",
         "school": "Mymesingh Zilla School",
         "college": "Govt. Anada Mohon College, Mymensingh",
         "hometown": "Akua, Sadar, Mymensingh",
@@ -42,9 +39,8 @@
         }
     },
     {
-        "image": "04",
-        "name": "Rifah Sajid Deya",
         "id": "04",
+        "name": "Rifah Sajid Deya",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Shekhdi, Matuail, Jatrabari, Dhaka",
@@ -56,9 +52,8 @@
         }
     },
     {
-        "image": "05",
-        "name": "A S M Fahim",
         "id": "05",
+        "name": "A S M Fahim",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Hasnabad, Daudkandi, Cumilla",
@@ -70,9 +65,8 @@
         }
     },
     {
-        "image": "06",
-        "name": "Shamim",
         "id": "06",
+        "name": "Shamim",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Mohisar, Bhedorgonj, Shariatpur",
