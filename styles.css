@@ -13,41 +13,34 @@ body {
     overflow-x: hidden;
 }
 
-/* Navbar styles with animated unique gradient background */
+/* Navbar styles with animated gradient background */
 .navbar {
-    position: sticky; /* Make the navbar sticky */
+    position: sticky;
     top: 0;
     width: 100%;
+    height: 60px;
     z-index: 100;
-    padding: 20px;
-    animation: animateNavbarBackground 10s infinite linear;
-    background-image: linear-gradient(-45deg, #f06, #9f6, #06f, #f06);
-    background-size: 400% 400%;
+    padding: 10px 0;
     color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    background: linear-gradient(45deg, #ff8a00, #e52e71, #f64f59, #c471ed, #12c2e9, #00d2ff);
+    background-size: 600% 600%;
+    animation: gradientAnimation 10s linear infinite alternate;
 }
 
-/* Animation for the unique navbar background gradient */
-@keyframes animateNavbarBackground {
+/* Animation for the navbar background gradient */
+@keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
     }
-    50% {
+    100% {
         background-position: 100% 50%;
     }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Navbar text styles */
-.navbar-text {
-    text-align: center;
 }
 
 /* Initial big text size */
@@ -60,11 +53,6 @@ body {
 .small {
     font-size: 24px;
     margin-bottom: 10px;
-}
-
-/* Paragraph text style */
-.navbar p {
-    font-size: 18px;
 }
 
 /* Center-align the student cards */
@@ -220,4 +208,65 @@ body {
 /* Hover effect for social media icons */
 .custom-social-links a:hover {
     color: #0056b3; /* Change the hover color as needed */
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+    .navbar {
+        padding: 30px; /* Increase navbar padding for large desktops */
+    }
+
+    .big {
+        font-size: 40px; /* Adjust font size for large screens */
+    }
+
+    .small {
+        font-size: 28px; /* Adjust font size for small headings on large screens */
+    }
+
+    .student-profiles {
+        padding: 0 100px; /* Increase horizontal padding for student cards */
+    }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px; /* Reduce navbar padding for smaller screens */
+    }
+
+    .big {
+        font-size: 28px; /* Decrease font size for large headings */
+    }
+
+    .small {
+        font-size: 18px; /* Decrease font size for small headings */
+    }
+
+    .student-profiles {
+        padding: 0 20px; /* Reduce horizontal padding for student cards */
+    }
+
+    .student-card {
+        width: 100%; /* Cards take full width on smaller screens */
+    }
+
+    .student-card:last-child {
+        margin-bottom: 10px; /* Add a smaller margin to the last card */
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        padding: 15px; /* Slightly increase navbar padding for tablets */
+    }
+
+    .big {
+        font-size: 32px; /* Adjust font size for larger tablets */
+    }
+
+    .small {
+        font-size: 22px; /* Adjust font size for smaller tablets */
+    }
 }
