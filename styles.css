@@ -304,6 +304,12 @@ body {
     margin-left: 8px;
 }
 
+/* Add styles for the highlighted class */
+.highlighted {
+    background-color: yellow; /* Change to your preferred highlight color */
+    font-weight: bold;
+}
+
 /* Footer styles */
 .footer {
     background-image: linear-gradient(45deg, #ff8a00, #e52e71, #00bfff, #228b22);

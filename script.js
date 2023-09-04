@@ -5,7 +5,7 @@ const studentsPerPage = 12;
 let currentPage = 1;
 
 // Function to create a student card element
-function createStudentCard(student) {
+function createStudentCard(student, searchQuery = "") {
     const card = document.createElement("div");
     card.classList.add("student-card");
 
@@ -16,11 +16,11 @@ function createStudentCard(student) {
 
     const name = document.createElement("h2");
     name.classList.add("student-name");
-    name.textContent = student.name;
+    name.innerHTML = highlightText(student.name, searchQuery);
 
     const id = document.createElement("p");
     id.classList.add("student-id");
-    id.textContent = `B1903050${student.id}`;
+    id.innerHTML = highlightText(`B1903050${student.id}`, searchQuery);
 
     const infoTable = document.createElement("table");
     infoTable.classList.add("student-info");
@@ -76,6 +76,14 @@ function createStudentCard(student) {
     return card;
 }
 
+// Function to highlight search results in text
+function highlightText(text, query) {
+    if (!query) return text; // Return the original text if there's no search query
+
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<span class="highlighted">$1</span>');
+}
+
 // Function to display a page of students
 function displayStudents(students, page) {
     const studentProfiles = document.querySelector(".student-profiles");
@@ -108,13 +116,14 @@ async function fetchAndGenerateStudentCards() {
         function applyFilters() {
             const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
             const searchValue = searchBar.value.toLowerCase();
-
+        
             // Filter students based on search input
             const filteredStudents = students.filter((student) => {
-                const searchData = `${student.name} ${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
-                return searchData.includes(searchValue);
+                const searchData = `${student.name} B1903050${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
+                const tableHeaders = ["school:", "college:", "hometown:"]; // Add lowercase versions of the table headers here
+                return searchData.includes(searchValue) || tableHeaders.some(header => searchData.includes(header));
             });
-
+        
             // Sort students based on the selected sort order
             if (sortOrder === "ascending") {
                 filteredStudents.sort((a, b) => a.id - b.id);
@@ -123,11 +132,11 @@ async function fetchAndGenerateStudentCards() {
             } else if (sortOrder === "random") {
                 filteredStudents.sort(() => Math.random() - 0.5);
             }
-
+        
             currentPage = 1; // Reset the current page
             displayStudents(filteredStudents, currentPage);
             updatePaginationButtons();
-        }
+        }                      
 
         // Modify the event listener for the sortOrder dropdown
         const sortOrderDropdown = document.getElementById("sortOrder");
