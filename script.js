@@ -5,7 +5,7 @@ function createStudentCard(student) {
 
     const image = document.createElement("img");
     image.classList.add("student-image");
-    image.src = student.image;
+    image.src = `/images/${student.image}.jpg`; // Updated image source
     image.alt = student.name;
 
     const name = document.createElement("h2");
@@ -14,7 +14,7 @@ function createStudentCard(student) {
 
     const id = document.createElement("p");
     id.classList.add("student-id");
-    id.textContent = student.id;
+    id.textContent = `B1903050${student.id.slice(-2)}`; // Extract the last 2 digits of ID
 
     const infoTable = document.createElement("table");
     infoTable.classList.add("student-info");
@@ -47,8 +47,15 @@ function createStudentCard(student) {
     const socialIcons = ["facebook", "twitter", "linkedin", "github"];
 
     socialIcons.forEach((icon) => {
+        let socialLink = student.socialLinks[icon];
+        if (icon === "linkedin") {
+            socialLink = `https://www.linkedin.com/in/${socialLink}`;
+        } else {
+            socialLink = `https://www.${icon}.com/${socialLink}`;
+        }
+
         const link = document.createElement("a");
-        link.href = student.socialLinks[icon];
+        link.href = socialLink;
         link.innerHTML = `<i class="fab fa-${icon}"></i>`;
         link.target = "_blank"; // Open link in a new tab
         socialLinks.appendChild(link);

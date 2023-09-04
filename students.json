@@ -1,86 +1,86 @@
 [
     {
-        "image": "/images/001.jpg",
+        "image": "01",
         "name": "Farhana Akter Suci",
-        "id": "B190305001",
+        "id": "01",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Majdee Court, Sadar, Noakhali",
         "socialLinks": {
-            "facebook": "https://www.facebook.com",
-            "twitter": "https://www.twitter.com",
-            "linkedin": "https://www.linkedin.com",
-            "github": "https://www.github.com"
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
         }
     },
     {
-        "image": "/images/002.jpg",
+        "image": "02",
         "name": "A. M. Rakib Hasan",
-        "id": "B190305002",
+        "id": "02",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Brahmman Paiksha, Sreenagar, Munshiganj",
         "socialLinks": {
-            "facebook": "https://www.facebook.com",
-            "twitter": "https://www.twitter.com",
-            "linkedin": "https://www.linkedin.com",
-            "github": "https://www.github.com"
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
         }
     },
     {
-        "image": "/images/003.jpg",
+        "image": "03",
         "name": "Nishat Mahmud",
-        "id": "B190305003",
+        "id": "03",
         "school": "Mymesingh Zilla School",
         "college": "Govt. Anada Mohon College, Mymensingh",
         "hometown": "Akua, Sadar, Mymensingh",
         "socialLinks": {
-            "facebook": "https://www.facebook.com/nishatrhythm",
-            "twitter": "https://www.twitter.com/nishatrhythm",
-            "linkedin": "https://www.linkedin.com/in/nishatrhythm",
-            "github": "https://www.github.com/nishatrhythm"
+            "facebook": "nishatrhythm",
+            "twitter": "nishatrhythm",
+            "linkedin": "nishatrhythm",
+            "github": "nishatrhythm"
         }
     },
     {
-        "image": "/images/004.jpg",
+        "image": "04",
         "name": "Rifah Sajid Deya",
-        "id": "B190305004",
+        "id": "04",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Shekhdi, Matuail, Jatrabari, Dhaka",
         "socialLinks": {
-            "facebook": "https://www.facebook.com",
-            "twitter": "https://www.twitter.com",
-            "linkedin": "https://www.linkedin.com",
-            "github": "https://www.github.com"
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
         }
     },
     {
-        "image": "/images/005.jpg",
+        "image": "05",
         "name": "A S M Fahim",
-        "id": "B190305005",
+        "id": "05",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Hasnabad, Daudkandi, Cumilla",
         "socialLinks": {
-            "facebook": "https://www.facebook.com",
-            "twitter": "https://www.twitter.com",
-            "linkedin": "https://www.linkedin.com",
-            "github": "https://www.github.com"
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
         }
     },
     {
-        "image": "/images/006.jpg",
+        "image": "06",
         "name": "Shamim",
-        "id": "B190305006",
+        "id": "06",
         "school": "Updating soon",
         "college": "Updating soon",
         "hometown": "Mohisar, Bhedorgonj, Shariatpur",
         "socialLinks": {
-            "facebook": "https://www.facebook.com",
-            "twitter": "https://www.twitter.com",
-            "linkedin": "https://www.linkedin.com",
-            "github": "https://www.github.com"
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
         }
     }
 ]
