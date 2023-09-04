@@ -40,5 +40,47 @@
             "linkedin": "https://www.linkedin.com/in/nishatrhythm",
             "github": "https://www.github.com/nishatrhythm"
         }
+    },
+    {
+        "image": "/images/004.jpg",
+        "name": "Rifah Sajid Deya",
+        "id": "B190305004",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Shekhdi, Matuail, Jatrabari, Dhaka",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com",
+            "twitter": "https://www.twitter.com",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://www.github.com"
+        }
+    },
+    {
+        "image": "/images/005.jpg",
+        "name": "A S M Fahim",
+        "id": "B190305005",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Hasnabad, Daudkandi, Cumilla",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com",
+            "twitter": "https://www.twitter.com",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://www.github.com"
+        }
+    },
+    {
+        "image": "/images/006.jpg",
+        "name": "Shamim",
+        "id": "B190305006",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Mohisar, Bhedorgonj, Shariatpur",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com",
+            "twitter": "https://www.twitter.com",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://www.github.com"
+        }
     }
 ]
