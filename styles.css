@@ -62,7 +62,7 @@ body {
     justify-content: space-evenly; /* Horizontal centering with spacing */
     margin: 20px 0;
     padding: 0 150px; /* Adjust horizontal padding as needed */
-    margin-bottom: 60px; /* Adjust the value to your preference */
+    margin-bottom: 30px; /* Adjust the value to your preference */
 }
 
 /* Unique styles for student cards with animation */
@@ -208,6 +208,74 @@ body {
 /* Hover effect for social media icons */
 .custom-social-links a:hover {
     color: #0056b3; /* Change the hover color as needed */
+}
+
+/* Pagination styles */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Style for the "Previous" button */
+.pagination-previous,
+.pagination-next {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+}
+
+/* Style for the "Next" button */
+.pagination-next {
+    margin-left: 10px; /* Add spacing between buttons */
+}
+
+/* Styles for enabled pagination buttons */
+.pagination-button:not(:disabled) {
+    background-color: #007bff;
+}
+
+/* Styles for disabled pagination buttons */
+.pagination-button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Hover effect for enabled pagination buttons */
+.pagination-button:not(:disabled):hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for disabled pagination buttons */
+.pagination-button:disabled:hover {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Styles for the "Previous" button icon */
+.pagination-previous i {
+    margin-right: 8px;
+}
+
+/* Styles for the "Next" button icon */
+.pagination-next i {
+    margin-left: 8px;
 }
 
 /* Very Large Desktop Styles */

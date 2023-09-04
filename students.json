@@ -76,5 +76,161 @@
             "linkedin": "",
             "github": ""
         }
+    },
+    {
+        "id": "01",
+        "name": "Farhana Akter Suci",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Majdee Court, Sadar, Noakhali",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "02",
+        "name": "A. M. Rakib Hasan",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Brahmman Paiksha, Sreenagar, Munshiganj",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "03",
+        "name": "Nishat Mahmud",
+        "school": "Mymesingh Zilla School",
+        "college": "Govt. Anada Mohon College, Mymensingh",
+        "hometown": "Akua, Sadar, Mymensingh",
+        "socialLinks": {
+            "facebook": "nishatrhythm",
+            "twitter": "nishatrhythm",
+            "linkedin": "nishatrhythm",
+            "github": "nishatrhythm"
+        }
+    },
+    {
+        "id": "04",
+        "name": "Rifah Sajid Deya",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Shekhdi, Matuail, Jatrabari, Dhaka",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "05",
+        "name": "A S M Fahim",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Hasnabad, Daudkandi, Cumilla",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "06",
+        "name": "Shamim",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Mohisar, Bhedorgonj, Shariatpur",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "01",
+        "name": "Farhana Akter Suci",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Majdee Court, Sadar, Noakhali",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "02",
+        "name": "A. M. Rakib Hasan",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Brahmman Paiksha, Sreenagar, Munshiganj",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "03",
+        "name": "Nishat Mahmud",
+        "school": "Mymesingh Zilla School",
+        "college": "Govt. Anada Mohon College, Mymensingh",
+        "hometown": "Akua, Sadar, Mymensingh",
+        "socialLinks": {
+            "facebook": "nishatrhythm",
+            "twitter": "nishatrhythm",
+            "linkedin": "nishatrhythm",
+            "github": "nishatrhythm"
+        }
+    },
+    {
+        "id": "04",
+        "name": "Rifah Sajid Deya",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Shekhdi, Matuail, Jatrabari, Dhaka",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "05",
+        "name": "A S M Fahim",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Hasnabad, Daudkandi, Cumilla",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
+    },
+    {
+        "id": "06",
+        "name": "Shamim",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Mohisar, Bhedorgonj, Shariatpur",
+        "socialLinks": {
+            "facebook": "",
+            "twitter": "",
+            "linkedin": "",
+            "github": ""
+        }
     }
 ]

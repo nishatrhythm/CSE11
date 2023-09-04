@@ -1,3 +1,9 @@
+// Define the number of students to display per page
+const studentsPerPage = 12;
+
+// Store the current page
+let currentPage = 1;
+
 // Function to create a student card element
 function createStudentCard(student) {
     const card = document.createElement("div");
@@ -70,20 +76,70 @@ function createStudentCard(student) {
     return card;
 }
 
+// Function to display a page of students
+function displayStudents(students, page) {
+    const studentProfiles = document.querySelector(".student-profiles");
+    studentProfiles.innerHTML = "";
+
+    const startIndex = (page - 1) * studentsPerPage;
+    const endIndex = startIndex + studentsPerPage;
+
+    const studentsToDisplay = students.slice(startIndex, endIndex);
+
+    studentsToDisplay.forEach((student) => {
+        const card = createStudentCard(student);
+        studentProfiles.appendChild(card);
+    });
+}
+
 // Function to fetch JSON data and generate student cards
 async function fetchAndGenerateStudentCards() {
     try {
         const response = await fetch("students.json"); // Fetch the JSON file
         const students = await response.json(); // Parse the JSON data
 
-        const studentProfiles = document.querySelector(".student-profiles");
+        // Function to handle the "Next" button click
+        function nextPage() {
+            currentPage++;
+            displayStudents(students, currentPage);
+            updatePaginationButtons();
+        }
 
-        students.forEach((student) => {
-            const card = createStudentCard(student);
-            studentProfiles.appendChild(card);
-        });
+        // Function to handle the "Previous" button click
+        function prevPage() {
+            currentPage--;
+            displayStudents(students, currentPage);
+            updatePaginationButtons();
+        }
+
+        // Function to update the state of pagination buttons
+        function updatePaginationButtons() {
+            const prevButton = document.querySelector(".pagination-previous");
+            const nextButton = document.querySelector(".pagination-next");
+
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === Math.ceil(students.length / studentsPerPage);
+        }
+
+        // Event listeners for pagination buttons
+        const prevButton = document.querySelector(".pagination-previous");
+        const nextButton = document.querySelector(".pagination-next");
+
+        prevButton.addEventListener("click", prevPage);
+        nextButton.addEventListener("click", nextPage);
+
+        // Call the function to display the initial page of students
+        displayStudents(students, currentPage);
+        updatePaginationButtons();
     } catch (error) {
         console.error("Error fetching or parsing JSON data:", error);
+
+        // Handle the error by disabling the buttons
+        const prevButton = document.querySelector(".pagination-previous");
+        const nextButton = document.querySelector(".pagination-next");
+        
+        prevButton.disabled = true;
+        nextButton.disabled = true;
     }
 }
 
