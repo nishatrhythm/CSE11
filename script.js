@@ -103,6 +103,7 @@ async function fetchAndGenerateStudentCards() {
             currentPage++;
             displayStudents(students, currentPage);
             updatePaginationButtons();
+            scrollToTop(); // Call the scrollToTop function
         }
 
         // Function to handle the "Previous" button click
@@ -110,6 +111,15 @@ async function fetchAndGenerateStudentCards() {
             currentPage--;
             displayStudents(students, currentPage);
             updatePaginationButtons();
+            scrollToTop(); // Call the scrollToTop function
+        }
+
+        // Function to scroll to the top of the website
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // You can use "auto" for instant scrolling
+            });
         }
 
         // Function to update the state of pagination buttons
@@ -137,7 +147,7 @@ async function fetchAndGenerateStudentCards() {
         // Handle the error by disabling the buttons
         const prevButton = document.querySelector(".pagination-previous");
         const nextButton = document.querySelector(".pagination-next");
-        
+
         prevButton.disabled = true;
         nextButton.disabled = true;
     }
