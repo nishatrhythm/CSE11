@@ -3,15 +3,12 @@
 
 * {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Reset some default styles for better consistency */
-body, h1, h2, p {
-    margin: 0;
-    padding: 0;
-}
-
-/* Hide horizontal overflow to prevent scrolling */
 body {
     overflow-x: hidden;
 }
@@ -31,8 +28,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to the navbar */
-    transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 /* Animation for the unique navbar background gradient */
@@ -56,13 +53,13 @@ body {
 /* Initial big text size */
 .big {
     font-size: 36px;
-    margin-bottom: 10px; /* Add margin between lines */
+    margin-bottom: 10px;
 }
 
 /* Smaller text size on scroll */
 .small {
     font-size: 24px;
-    margin-bottom: 10px; /* Add margin between lines */
+    margin-bottom: 10px;
 }
 
 /* Paragraph text style */
@@ -75,43 +72,43 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px; /* Add top margin to create a gap */
+    margin-top: 20px;
 }
 
 /* Unique styles for student cards with animation */
 .student-card {
-    background-color: #fff; /* Background color for cards */
+    background-color: #fff;
     border: 1px solid #e0e0e0;
-    padding: 15px; /* Reduce padding to make the cards smaller */
+    padding: 15px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
     animation: slideInUp 1s ease, scaleCard 0.5s ease-in-out;
-    width: calc(25% - 20px); /* Three cards side by side on a wide screen */
-    display: flex; /* Add flex display */
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center content horizontally */
-    text-align: center; /* Center text within card */
+    width: calc(25% - 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     overflow: hidden;
     position: relative;
     transition: transform 0.5s, box-shadow 0.5s;
-    backdrop-filter: blur(5px); /* Apply a blur effect to create a glass-like appearance */
+    backdrop-filter: blur(5px);
 }
 
 /* Style for student image within the card */
 .student-image {
     max-width: 100%;
     height: auto;
-    border-radius: 10px; /* Add border-radius to round the image corners */
+    border-radius: 10px;
 }
 
 /* Style for student name within the card */
 .student-name {
     font-weight: bold;
-    font-size: 24px; /* Adjust the font size as needed */
+    font-size: 24px;
     margin: 10px 0;
     text-align: center;
-    color: #000; /* Default text color */
+    color: #000;
 }
 
 /* Style for ID with center alignment */
@@ -134,6 +131,11 @@ body {
     font-weight: bold;
     margin-right: 5px;
     text-align: right; /* Align labels to the right */
+}
+
+/* Add some gap between labels and content */
+.student-info td {
+    padding-right: 5px; /* Adjust the padding as needed */
 }
 
 /* Animation for sliding in cards from below */
@@ -171,13 +173,47 @@ body {
 
 /* Style for social media icons */
 .social-links a {
-    color: #007bff; /* Change the color of the icons as needed */
+    color: #007bff;
+    font-size: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+/* Hover effect for social media icons */
+.social-links a:hover {
+    color: #0056b3;
+}
+
+/* Add a class for the social media links container */
+.custom-social-links {
+    margin-top: 10px;
+}
+
+/* Style for social media icons */
+.custom-social-links a {
     font-size: 20px; /* Adjust the size of the icons as needed */
     margin-right: 10px; /* Add spacing between icons */
     text-decoration: none; /* Remove underline from links */
 }
 
+/* Define the colors for each social media icon */
+.custom-social-links a:nth-child(1) {
+    color: #1877f2; /* Facebook color */
+}
+
+.custom-social-links a:nth-child(2) {
+    color: #1da1f2; /* Twitter color */
+}
+
+.custom-social-links a:nth-child(3) {
+    color: #2867b2; /* LinkedIn color */
+}
+
+.custom-social-links a:nth-child(4) {
+    color: #333; /* GitHub color */
+}
+
 /* Hover effect for social media icons */
-.social-links a:hover {
+.custom-social-links a:hover {
     color: #0056b3; /* Change the hover color as needed */
 }
