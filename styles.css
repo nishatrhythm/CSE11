@@ -210,63 +210,115 @@ body {
     color: #0056b3; /* Change the hover color as needed */
 }
 
-/* Large Desktop Styles */
-@media screen and (min-width: 1200px) and (max-width: 1366px) {
-    .navbar {
-        padding: 30px; /* Increase navbar padding for large desktops */
-    }
-
-    .big {
-        font-size: 40px; /* Adjust font size for large screens */
-    }
-
-    .small {
-        font-size: 28px; /* Adjust font size for small headings on large screens */
-    }
-
+/* Very Large Desktop Styles */
+@media screen and (min-width: 1920px) {
     .student-profiles {
-        padding: 0 100px; /* Increase horizontal padding for student cards */
-    }
-}
-
-/* Mobile Styles */
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 10px; /* Reduce navbar padding for smaller screens */
-    }
-
-    .big {
-        font-size: 28px; /* Decrease font size for large headings */
-    }
-
-    .small {
-        font-size: 18px; /* Decrease font size for small headings */
-    }
-
-    .student-profiles {
-        padding: 0 20px; /* Reduce horizontal padding for student cards */
+        padding: 0 100px;
     }
 
     .student-card {
-        width: 100%; /* Cards take full width on smaller screens */
+        width: calc(25% - 20px);
+    }
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1366px) and (max-width: 1920px) {
+    .student-profiles {
+        padding: 0 150px;
     }
 
-    .student-card:last-child {
-        margin-bottom: 10px; /* Add a smaller margin to the last card */
+    .student-card {
+        width: calc(33.33% - 20px);
+    }
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+    .student-profiles {
+        padding: 0 180px;
+    }
+
+    .student-card {
+        width: calc(50% - 20px);
+    }
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1090px) and (max-width: 1200px) {
+    .student-profiles {
+        padding: 0 150px;
+    }
+
+    .student-card {
+        width: calc(50% - 20px);
     }
 }
 
 /* Tablet Styles */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 660px) and (max-width: 1090px) {
+    .student-profiles {
+        padding: 0 80px;
+    }
+
+    .student-card {
+        width: calc(50% - 20px);
+    }
+
+    /* Additional tablet-specific styles here */
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 770px) {
     .navbar {
-        padding: 15px; /* Slightly increase navbar padding for tablets */
+        padding: 10px;
     }
 
     .big {
-        font-size: 32px; /* Adjust font size for larger tablets */
+        font-size: 28px;
     }
 
     .small {
-        font-size: 22px; /* Adjust font size for smaller tablets */
+        font-size: 18px;
     }
+
+    .student-profiles {
+        padding: 0 20px;
+    }
+
+    .student-card {
+        width: 100%;
+    }
+
+    .student-card:last-child {
+        margin-bottom: 10px;
+    }
+    .navbar h2 {
+        font-size: 16px; /* Change the font size to your desired value */
+    }
+
+    /* Additional mobile-specific styles here */
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+    .navbar {
+        padding: 15px;
+    }
+
+    .big {
+        font-size: 32px;
+    }
+
+    .small {
+        font-size: 22px;
+    }  
+    /* Additional tablet-specific styles here */
+}
+
+@media screen and (max-width: 520px) {
+    .navbar h2 {
+        font-size: 14px; /* Change the font size to your desired value */
+    }
+
+    /* Additional tablet-specific styles here */
 }
