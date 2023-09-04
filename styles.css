@@ -2,20 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Reset some default styles for better consistency */
 body {
     overflow-x: hidden;
+    padding-bottom: 60px; /* Add padding for the footer */
 }
 
 /* Navbar styles with animated unique gradient background */
 .navbar {
-    position: sticky;
+    position: sticky; /* Make the navbar sticky */
     top: 0;
     width: 100%;
     z-index: 100;
@@ -116,6 +121,8 @@ body {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 5px;
+    color: #555;
 }
 
 /* Style for School, College, and Hometown with left alignment */
@@ -184,12 +191,7 @@ body {
     color: #0056b3;
 }
 
-/* Add a class for the social media links container */
-.custom-social-links {
-    margin-top: 10px;
-}
-
-/* Style for social media icons */
+/* Style for social media icons with inline CSS */
 .custom-social-links a {
     font-size: 20px; /* Adjust the size of the icons as needed */
     margin-right: 10px; /* Add spacing between icons */
