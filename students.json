@@ -1,0 +1,44 @@
+[
+    {
+        "image": "/images/001.jpg",
+        "name": "Farhana Akter Suci",
+        "id": "B190305001",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Majdee Court, Sadar, Noakhali",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com",
+            "twitter": "https://www.twitter.com",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://www.github.com"
+        }
+    },
+    {
+        "image": "/images/002.jpg",
+        "name": "A. M. Rakib Hasan",
+        "id": "B190305002",
+        "school": "Updating soon",
+        "college": "Updating soon",
+        "hometown": "Brahmman Paiksha, Sreenagar, Munshiganj",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com",
+            "twitter": "https://www.twitter.com",
+            "linkedin": "https://www.linkedin.com",
+            "github": "https://www.github.com"
+        }
+    },
+    {
+        "image": "/images/003.jpg",
+        "name": "Nishat Mahmud",
+        "id": "B190305003",
+        "school": "Mymesingh Zilla School",
+        "college": "Govt. Anada Mohon College, Mymensingh",
+        "hometown": "Akua, Sadar, Mymensingh",
+        "socialLinks": {
+            "facebook": "https://www.facebook.com/nishatrhythm",
+            "twitter": "https://www.twitter.com/nishatrhythm",
+            "linkedin": "https://www.linkedin.com/in/nishatrhythm",
+            "github": "https://www.github.com/nishatrhythm"
+        }
+    }
+]

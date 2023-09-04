@@ -1,79 +1,84 @@
-// Sample data for student cards
-const students = [
-    {
-        image: "/images/001.jpg",
-        name: "Farhana Akter Suci",
-        id: "B190305001",
-        school: "Updating soon",
-        college: "Updating soon",
-        hometown: "Majdee Court, Sadar, Noakhali",
-        socialLinks: {
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            linkedin: "https://www.linkedin.com",
-            github: "https://www.github.com"
-        }
-    },
-    {
-        image: "/images/002.jpg",
-        name: "A. M. Rakib Hasan",
-        id: "B190305002",
-        school: "Updating soon",
-        college: "Updating soon",
-        hometown: "Brahmman Paiksha, Sreenagar, Munshiganj",
-        socialLinks: {
-            facebook: "https://www.facebook.com",
-            twitter: "https://www.twitter.com",
-            linkedin: "https://www.linkedin.com",
-            github: "https://www.github.com"
-        }
-    },
-    // Add more student data here
-];
-
-// Function to create a student card
+// Function to create a student card element
 function createStudentCard(student) {
     const card = document.createElement("div");
     card.classList.add("student-card");
 
-    card.innerHTML = `
-        <img class="student-image" src="${student.image}" alt="${student.name}">
-        <h2 class="student-name">${student.name}</h2>
-        <p class="student-id">${student.id}</p>
-        <table class="student-info">
-            <tr>
-                <td class="label">School:</td>
-                <td>${student.school}</td>
-            </tr>
-            <tr>
-                <td class="label">College:</td>
-                <td>${student.college}</td>
-            </tr>
-            <tr>
-                <td class="label">Hometown:</td>
-                <td>${student.hometown}</td>
-            </tr>
-        </table>
-        <div class="social-links custom-social-links">
-            <a href="${student.socialLinks.facebook}"><i class="fab fa-facebook"></i></a>
-            <a href="${student.socialLinks.twitter}"><i class="fab fa-twitter"></i></a>
-            <a href="${student.socialLinks.linkedin}"><i class="fab fa-linkedin"></i></a>
-            <a href="${student.socialLinks.github}"><i class="fab fa-github"></i></a>
-        </div>
-    `;
+    const image = document.createElement("img");
+    image.classList.add("student-image");
+    image.src = student.image;
+    image.alt = student.name;
+
+    const name = document.createElement("h2");
+    name.classList.add("student-name");
+    name.textContent = student.name;
+
+    const id = document.createElement("p");
+    id.classList.add("student-id");
+    id.textContent = student.id;
+
+    const infoTable = document.createElement("table");
+    infoTable.classList.add("student-info");
+
+    const infoRows = [
+        { label: "School:", value: student.school },
+        { label: "College:", value: student.college },
+        { label: "Hometown:", value: student.hometown },
+    ];
+
+    infoRows.forEach((infoRow) => {
+        const row = document.createElement("tr");
+
+        const labelCell = document.createElement("td");
+        labelCell.classList.add("label");
+        labelCell.textContent = infoRow.label;
+
+        const valueCell = document.createElement("td");
+        valueCell.textContent = infoRow.value;
+
+        row.appendChild(labelCell);
+        row.appendChild(valueCell);
+
+        infoTable.appendChild(row);
+    });
+
+    const socialLinks = document.createElement("div");
+    socialLinks.classList.add("social-links", "custom-social-links");
+
+    const socialIcons = ["facebook", "twitter", "linkedin", "github"];
+
+    socialIcons.forEach((icon) => {
+        const link = document.createElement("a");
+        link.href = student.socialLinks[icon];
+        link.innerHTML = `<i class="fab fa-${icon}"></i>`;
+        link.target = "_blank"; // Open link in a new tab
+        socialLinks.appendChild(link);
+    });
+
+    card.appendChild(image);
+    card.appendChild(name);
+    card.appendChild(id);
+    card.appendChild(infoTable);
+    card.appendChild(socialLinks);
 
     return card;
 }
 
-// Function to generate student cards and append them to the page
-function generateStudentCards() {
-    const studentProfiles = document.querySelector(".student-profiles");
+// Function to fetch JSON data and generate student cards
+async function fetchAndGenerateStudentCards() {
+    try {
+        const response = await fetch("students.json"); // Fetch the JSON file
+        const students = await response.json(); // Parse the JSON data
 
-    students.forEach((student) => {
-        const card = createStudentCard(student);
-        studentProfiles.appendChild(card);
-    });
+        const studentProfiles = document.querySelector(".student-profiles");
+
+        students.forEach((student) => {
+            const card = createStudentCard(student);
+            studentProfiles.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Error fetching or parsing JSON data:", error);
+    }
 }
 
-// Call the function to generate student cards when the page loads
-window.addEventListener("load", generateStudentCards);
+// Call the function to fetch and generate student cards when the page loads
+window.addEventListener("load", fetchAndGenerateStudentCards);
