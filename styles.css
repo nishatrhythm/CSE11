@@ -187,7 +187,12 @@ body {
     color: #0056b3;
 }
 
-/* Style for social media icons with inline CSS */
+/* Add a class for the social media links container */
+.custom-social-links {
+    margin-top: 10px;
+}
+
+/* Style for social media icons */
 .custom-social-links a {
     font-size: 20px; /* Adjust the size of the icons as needed */
     margin-right: 10px; /* Add spacing between icons */
@@ -214,14 +219,4 @@ body {
 /* Hover effect for social media icons */
 .custom-social-links a:hover {
     color: #0056b3; /* Change the hover color as needed */
-}
-
-
-/* Style for the footer */
-.footer {
-    background-color: #333; /* Background color for the footer */
-    color: white; /* Text color for the footer */
-    text-align: center; /* Center-align the text */
-    padding: 20px 0; /* Add vertical padding (top and bottom) and no horizontal padding */
-    width: 100%; /* Full width */
 }
