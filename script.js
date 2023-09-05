@@ -5,7 +5,7 @@ const studentsPerPage = 12;
 let currentPage = 1;
 
 // Function to create a student card element
-function createStudentCard(student, searchQuery = "") {
+function createStudentCard(student) {
     const card = document.createElement("div");
     card.classList.add("student-card");
 
@@ -16,11 +16,11 @@ function createStudentCard(student, searchQuery = "") {
 
     const name = document.createElement("h2");
     name.classList.add("student-name");
-    name.innerHTML = highlightText(student.name, searchQuery);
+    name.textContent = student.name;
 
     const id = document.createElement("p");
     id.classList.add("student-id");
-    id.innerHTML = highlightText(`B1903050${student.id}`, searchQuery);
+    id.textContent = `B1903050${student.id}`;
 
     const infoTable = document.createElement("table");
     infoTable.classList.add("student-info");
@@ -76,14 +76,6 @@ function createStudentCard(student, searchQuery = "") {
     return card;
 }
 
-// Function to highlight search results in text
-function highlightText(text, query) {
-    if (!query) return text; // Return the original text if there's no search query
-
-    const regex = new RegExp(`(${query})`, 'gi');
-    return text.replace(regex, '<span class="highlighted">$1</span>');
-}
-
 // Function to display a page of students
 function displayStudents(students, page) {
     const studentProfiles = document.querySelector(".student-profiles");
@@ -100,122 +92,44 @@ function displayStudents(students, page) {
     });
 }
 
-// Function to create and append pagination buttons
-function createPaginationButtons() {
-    const prevButton = document.createElement("button");
-    prevButton.id = "prevButton";
-    prevButton.classList.add("pagination-button", "pagination-previous");
-    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
-
-    const nextButton = document.createElement("button");
-    nextButton.id = "nextButton";
-    nextButton.classList.add("pagination-button", "pagination-next");
-    nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
-
-    const paginationDiv = document.querySelector(".pagination");
-    paginationDiv.appendChild(prevButton);
-    paginationDiv.appendChild(nextButton);
-}
-
 // Function to fetch JSON data and generate student cards
 async function fetchAndGenerateStudentCards() {
     try {
         const response = await fetch("students.json"); // Fetch the JSON file
         const students = await response.json(); // Parse the JSON data
 
-        // Add an event listener to the search bar for input events
-        const searchBar = document.getElementById("searchBar");
-        searchBar.addEventListener("input", () => {
-            applyFilters(); // Call the function to apply filters
-        });
-
-        // Function to filter and display students based on filters and search input
-        function applyFilters() {
-            const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
-            const searchValue = searchBar.value.toLowerCase();
-
-            // Filter students based on search input
-            const filteredStudents = students.filter((student) => {
-                const searchData = `${student.name} B1903050${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
-                const tableHeaders = ["school:", "college:", "hometown:"]; // Add lowercase versions of the table headers here
-                return searchData.includes(searchValue) || tableHeaders.some(header => searchData.includes(header));
-            });
-
-            // Sort students based on the selected sort order
-            if (sortOrder === "ascending") {
-                filteredStudents.sort((a, b) => a.id - b.id);
-            } else if (sortOrder === "descending") {
-                filteredStudents.sort((a, b) => b.id - a.id);
-            } else if (sortOrder === "random") {
-                filteredStudents.sort(() => Math.random() - 0.5);
-            }
-
-            currentPage = 1; // Reset the current page
-            displayStudents(filteredStudents, currentPage);
-            updatePaginationButtons();
-        }
-
-        // Modify the event listener for the sortOrder dropdown
-        const sortOrderDropdown = document.getElementById("sortOrder");
-        sortOrderDropdown.addEventListener("change", () => {
-            applyFilters(); // Call the function to apply filters
-        });
-
-        // Function to scroll to the top of the website smoothly
-        function scrollToTop() {
-            const scrollDuration = 400; // Adjust the duration as needed
-            const scrollStep = -window.scrollY / (scrollDuration / 15);
-
-            function scroll() {
-                if (window.scrollY !== 0) {
-                    window.scrollBy(0, scrollStep);
-                    requestAnimationFrame(scroll);
-                }
-            }
-
-            requestAnimationFrame(scroll);
-        }
-
         // Function to handle the "Next" button click
         function nextPage() {
-            scrollToTop(); // Scroll to top first
             currentPage++;
             displayStudents(students, currentPage);
             updatePaginationButtons();
+            scrollToTop(); // Call the scrollToTop function
         }
 
         // Function to handle the "Previous" button click
         function prevPage() {
-            scrollToTop(); // Scroll to top first
             currentPage--;
             displayStudents(students, currentPage);
             updatePaginationButtons();
+            scrollToTop(); // Call the scrollToTop function
         }
 
-
-
+        // Function to scroll to the top of the website
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // You can use "auto" for instant scrolling
+            });
+        }
 
         // Function to update the state of pagination buttons
         function updatePaginationButtons() {
             const prevButton = document.querySelector(".pagination-previous");
             const nextButton = document.querySelector(".pagination-next");
 
-            const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
-            const searchValue = searchBar.value.toLowerCase();
-
-            // Filter students based on search input
-            const filteredStudents = students.filter((student) => {
-                const searchData = `${student.name} ${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
-                return searchData.includes(searchValue);
-            });
-
-            // Sort and update pagination based on the filtered students
-            const totalFilteredStudents = filteredStudents.length;
-
             prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === Math.ceil(totalFilteredStudents / studentsPerPage) || totalFilteredStudents <= studentsPerPage;
+            nextButton.disabled = currentPage === Math.ceil(students.length / studentsPerPage);
         }
-
 
         // Event listeners for pagination buttons
         const prevButton = document.querySelector(".pagination-previous");
@@ -241,6 +155,3 @@ async function fetchAndGenerateStudentCards() {
 
 // Call the function to fetch and generate student cards when the page loads
 window.addEventListener("load", fetchAndGenerateStudentCards);
-
-// Call the function to create and append pagination buttons
-createPaginationButtons();

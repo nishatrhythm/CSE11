@@ -67,9 +67,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 30px 0;
+    margin: 20px 0;
     padding: 0 150px;
     margin-bottom: 30px;
+    flex: 1; /* Allow content to grow and fill available space */
+    overflow-y: auto; /* Add vertical scroll if needed for content */
 }
 
 /* Unique styles for student cards with animation */
@@ -302,53 +304,6 @@ body {
 /* Styles for the "Next" button icon */
 .pagination-next i {
     margin-left: 8px;
-}
-
-/* Add styles for the highlighted class */
-.highlighted {
-    background-color: yellow; /* Change to your preferred highlight color */
-    font-weight: bold;
-}
-
-/* Styles for the filter section */
-.filter-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 20px;
-    background-color: #f0f0f0; /* Background color */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.filter-section label {
-    font-size: 18px;
-    color: #333; /* Text color */
-    display: flex;
-    align-items: center;
-}
-
-.filter-section select,
-#searchBar {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px;
-    background-position: right 10px center;
-    background-size: 20px; /* Adjust icon size */
-}
-
-.filter-section select {
-    background-image: url('angle-down.png'); /* Add your sort icon image */
-}
-
-/* Style for the search input */
-#searchBar {
-    background-image: url('search.png'); /* Add your search icon image */
-    margin-left: 10px; /* Add some spacing between select and input */
 }
 
 /* Footer styles */
