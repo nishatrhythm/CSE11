@@ -1,5 +1,5 @@
 // Define the number of students to display per page
-const studentsPerPage = 12;
+let studentsPerPage = 12;
 
 // Store the current page
 let currentPage = 1;
@@ -77,12 +77,12 @@ function createStudentCard(student) {
 }
 
 // Function to display a page of students
-function displayStudents(students, page) {
+function displayStudents(students, page, cardsPerPage) {
     const studentProfiles = document.querySelector(".student-profiles");
     studentProfiles.innerHTML = "";
 
-    const startIndex = (page - 1) * studentsPerPage;
-    const endIndex = startIndex + studentsPerPage;
+    const startIndex = (page - 1) * cardsPerPage; // Use the cardsPerPage parameter here
+    const endIndex = startIndex + cardsPerPage; // Use the cardsPerPage parameter here
 
     const studentsToDisplay = students.slice(startIndex, endIndex);
 
@@ -135,8 +135,31 @@ async function fetchAndGenerateStudentCards() {
         const prevButton = document.querySelector(".pagination-previous");
         const nextButton = document.querySelector(".pagination-next");
 
-        prevButton.addEventListener("click", prevPage);
-        nextButton.addEventListener("click", nextPage);
+        prevButton.addEventListener("click", () => {
+            currentPage--;
+            displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
+            updatePaginationButtons();
+            scrollToTop();
+        });
+
+        nextButton.addEventListener("click", () => {
+            currentPage++;
+            displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
+            updatePaginationButtons();
+            scrollToTop();
+        });
+
+        // Add event listener to the cards per page dropdown
+        const cardsPerPageDropdown = document.getElementById("cards");
+
+        cardsPerPageDropdown.addEventListener("change", () => {
+            const selectedCardsPerPage = parseInt(cardsPerPageDropdown.value, 10);
+            currentPage = 1;
+            studentsPerPage = selectedCardsPerPage; // Update the 'studentsPerPage' variable
+            displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
+            updatePaginationButtons();
+            scrollToTop();
+        });
 
         // Call the function to display the initial page of students
         displayStudents(students, currentPage);
