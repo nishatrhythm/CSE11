@@ -100,6 +100,23 @@ function displayStudents(students, page) {
     });
 }
 
+// Function to create and append pagination buttons
+function createPaginationButtons() {
+    const prevButton = document.createElement("button");
+    prevButton.id = "prevButton";
+    prevButton.classList.add("pagination-button", "pagination-previous");
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+
+    const nextButton = document.createElement("button");
+    nextButton.id = "nextButton";
+    nextButton.classList.add("pagination-button", "pagination-next");
+    nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+
+    const paginationDiv = document.querySelector(".pagination");
+    paginationDiv.appendChild(prevButton);
+    paginationDiv.appendChild(nextButton);
+}
+
 // Function to fetch JSON data and generate student cards
 async function fetchAndGenerateStudentCards() {
     try {
@@ -144,32 +161,38 @@ async function fetchAndGenerateStudentCards() {
             applyFilters(); // Call the function to apply filters
         });
 
+        // Function to scroll to the top of the website smoothly
+        function scrollToTop() {
+            const scrollDuration = 400; // Adjust the duration as needed
+            const scrollStep = -window.scrollY / (scrollDuration / 15);
+
+            function scroll() {
+                if (window.scrollY !== 0) {
+                    window.scrollBy(0, scrollStep);
+                    requestAnimationFrame(scroll);
+                }
+            }
+
+            requestAnimationFrame(scroll);
+        }
 
         // Function to handle the "Next" button click
         function nextPage() {
+            scrollToTop(); // Scroll to top first
             currentPage++;
             displayStudents(students, currentPage);
             updatePaginationButtons();
-            scrollToTop(); // Call the scrollToTop function
         }
 
         // Function to handle the "Previous" button click
         function prevPage() {
+            scrollToTop(); // Scroll to top first
             currentPage--;
             displayStudents(students, currentPage);
             updatePaginationButtons();
-            scrollToTop(); // Call the scrollToTop function
         }
 
-        // Function to scroll to the top of the website
-        function scrollToTop() {
-            // Use window.scroll to smoothly scroll to the top of the page
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
+
 
 
         // Function to update the state of pagination buttons
@@ -218,3 +241,6 @@ async function fetchAndGenerateStudentCards() {
 
 // Call the function to fetch and generate student cards when the page loads
 window.addEventListener("load", fetchAndGenerateStudentCards);
+
+// Call the function to create and append pagination buttons
+createPaginationButtons();
