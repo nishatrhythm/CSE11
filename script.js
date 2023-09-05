@@ -116,14 +116,14 @@ async function fetchAndGenerateStudentCards() {
         function applyFilters() {
             const sortOrder = document.getElementById("sortOrder").value.toLowerCase();
             const searchValue = searchBar.value.toLowerCase();
-        
+
             // Filter students based on search input
             const filteredStudents = students.filter((student) => {
                 const searchData = `${student.name} B1903050${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
                 const tableHeaders = ["school:", "college:", "hometown:"]; // Add lowercase versions of the table headers here
                 return searchData.includes(searchValue) || tableHeaders.some(header => searchData.includes(header));
             });
-        
+
             // Sort students based on the selected sort order
             if (sortOrder === "ascending") {
                 filteredStudents.sort((a, b) => a.id - b.id);
@@ -132,11 +132,11 @@ async function fetchAndGenerateStudentCards() {
             } else if (sortOrder === "random") {
                 filteredStudents.sort(() => Math.random() - 0.5);
             }
-        
+
             currentPage = 1; // Reset the current page
             displayStudents(filteredStudents, currentPage);
             updatePaginationButtons();
-        }                      
+        }
 
         // Modify the event listener for the sortOrder dropdown
         const sortOrderDropdown = document.getElementById("sortOrder");
@@ -163,11 +163,14 @@ async function fetchAndGenerateStudentCards() {
 
         // Function to scroll to the top of the website
         function scrollToTop() {
-            window.scrollTo({
+            // Use window.scroll to smoothly scroll to the top of the page
+            window.scroll({
                 top: 0,
-                behavior: "smooth" // You can use "auto" for instant scrolling
+                left: 0,
+                behavior: 'smooth'
             });
         }
+
 
         // Function to update the state of pagination buttons
         function updatePaginationButtons() {
