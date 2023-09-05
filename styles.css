@@ -70,8 +70,10 @@ body {
     margin: 20px 0;
     padding: 0 150px;
     margin-bottom: 30px;
-    flex: 1; /* Allow content to grow and fill available space */
-    overflow-y: auto; /* Add vertical scroll if needed for content */
+    flex: 1;
+    /* Allow content to grow and fill available space */
+    overflow-y: auto;
+    /* Add vertical scroll if needed for content */
 }
 
 /* Unique styles for student cards with animation */
@@ -306,6 +308,62 @@ body {
     margin-left: 8px;
 }
 
+/* Style for the search container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    max-width: 400px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center-align the container horizontally */
+    margin-top: 30px;
+}
+
+/* Style for the search input */
+#searchInput {
+    flex-grow: 1;
+    border: none;
+    background-color: #f2f2f2;
+    padding: 10px;
+    padding-left: 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    border-top-right-radius: 0; /* Rectangle shape for top-right corner */
+    border-bottom-right-radius: 0; /* Rectangle shape for bottom-right corner */
+    outline-color: #3498db; /* Replace with your desired color */
+}
+
+/* Style for the search button container */
+#searchButtonContainer {
+    display: flex;
+    border-top-left-radius: 0; /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0; /* Rectangle shape for bottom-left corner */
+}
+
+/* Style for the search button */
+#searchButton {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    border-top-left-radius: 0; /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0; /* Rectangle shape for bottom-left corner */
+    transition: background-color 0.3s ease;
+}
+
+/* Style for the search button icon */
+#searchButton i {
+    margin-right: 5px;
+}
+
+/* Style for the search button on hover */
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
 /* Footer styles */
 .footer {
     background-image: linear-gradient(45deg, #ff8a00, #e52e71, #00bfff, #228b22);
@@ -318,17 +376,21 @@ body {
 
 /* Add this CSS to your styles.css file */
 .footer a {
-    color: inherit; /* Use the default text color */
-    text-decoration: underline; /* Underline the link text */
+    color: inherit;
+    /* Use the default text color */
+    text-decoration: underline;
+    /* Underline the link text */
 }
 
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -443,7 +505,9 @@ body {
     .navbar h2 {
         font-size: 16px;
     }
-    .batch, .university {
+
+    .batch,
+    .university {
         display: block;
     }
 }
@@ -452,7 +516,9 @@ body {
     .navbar h2 {
         font-size: 16px;
     }
-    .batch, .university {
+
+    .batch,
+    .university {
         display: block;
     }
 }
