@@ -161,32 +161,38 @@ async function fetchAndGenerateStudentCards() {
             applyFilters(); // Call the function to apply filters
         });
 
+        // Function to scroll to the top of the website smoothly
+        function scrollToTop() {
+            const scrollDuration = 400; // Adjust the duration as needed
+            const scrollStep = -window.scrollY / (scrollDuration / 15);
+
+            function scroll() {
+                if (window.scrollY !== 0) {
+                    window.scrollBy(0, scrollStep);
+                    requestAnimationFrame(scroll);
+                }
+            }
+
+            requestAnimationFrame(scroll);
+        }
 
         // Function to handle the "Next" button click
         function nextPage() {
+            scrollToTop(); // Scroll to top first
             currentPage++;
             displayStudents(students, currentPage);
             updatePaginationButtons();
-            scrollToTop(); // Call the scrollToTop function
         }
 
         // Function to handle the "Previous" button click
         function prevPage() {
+            scrollToTop(); // Scroll to top first
             currentPage--;
             displayStudents(students, currentPage);
             updatePaginationButtons();
-            scrollToTop(); // Call the scrollToTop function
         }
 
-        // Function to scroll to the top of the website
-        function scrollToTop() {
-            // Use window.scroll to smoothly scroll to the top of the page
-            window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
+
 
 
         // Function to update the state of pagination buttons
