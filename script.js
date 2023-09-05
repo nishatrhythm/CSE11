@@ -162,7 +162,7 @@ async function fetchAndGenerateStudentCards() {
         });
 
         // Call the function to display the initial page of students
-        displayStudents(students, currentPage);
+        displayStudents(students, currentPage, studentsPerPage);
         updatePaginationButtons();
     } catch (error) {
         console.error("Error fetching or parsing JSON data:", error);
