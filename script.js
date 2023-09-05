@@ -119,8 +119,6 @@ async function fetchAndGenerateStudentCards() {
             updatePaginationButtons();
         });
 
-
-
         // Function to handle the "Next" button click
         function nextPage() {
             currentPage++;
@@ -182,6 +180,65 @@ async function fetchAndGenerateStudentCards() {
             displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
             updatePaginationButtons();
             scrollToTop();
+        });
+
+        // Function to filter students based on search query (case-insensitive)
+        function filterStudents(query, students) {
+            query = query.toLowerCase();
+            return students.filter((student) => {
+                // Combine student data fields into a single string for searching
+                const searchData = `${student.name} B1903050${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
+
+                // Check if the query exactly matches the full student ID
+                if (searchData.includes(`b1903050${query}`)) {
+                    return true;
+                }
+
+                // Check if the query is a partial match for the full student ID or other fields
+                return searchData.includes(query);
+            });
+        }
+
+        // Event listener for the search button
+        const searchButton = document.getElementById("searchButton");
+        searchButton.addEventListener("click", () => {
+            const searchInput = document.getElementById("searchInput");
+            const searchQuery = searchInput.value.trim(); // Get the search query and remove leading/trailing spaces
+
+            if (searchQuery !== "") {
+                // Filter students based on the search query
+                const filteredStudents = filterStudents(searchQuery, students);
+
+                if (filteredStudents.length > 0) {
+                    // If there are matching students, display them
+                    currentPage = 1; // Reset to the first page
+                    displayStudents(filteredStudents, currentPage, studentsPerPage);
+                    updatePaginationButtons();
+                } else {
+                    // If no matching students found, display a message or handle it as needed
+                    // For example, you can show an alert or a message on the page
+                    alert("No matching students found.");
+                }
+            } else {
+                // If the search input is empty, display all students
+                currentPage = 1; // Reset to the first page
+                displayStudents(students, currentPage, studentsPerPage);
+                updatePaginationButtons();
+            }
+        });
+
+        // Event listener for real-time search
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", () => {
+            const searchQuery = searchInput.value.trim().toLowerCase();
+
+            // Filter students based on the search query
+            const filteredStudents = filterStudents(searchQuery, students);
+
+            // Display the filtered students
+            currentPage = 1; // Reset to the first page
+            displayStudents(filteredStudents, currentPage, studentsPerPage);
+            updatePaginationButtons();
         });
 
         // Call the function to display the initial page of students
