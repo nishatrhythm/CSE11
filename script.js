@@ -98,6 +98,29 @@ async function fetchAndGenerateStudentCards() {
         const response = await fetch("students.json"); // Fetch the JSON file
         const students = await response.json(); // Parse the JSON data
 
+        // Add this code inside the fetchAndGenerateStudentCards function
+        const sortingDropdown = document.getElementById("sorting");
+        sortingDropdown.addEventListener("change", () => {
+            // Get the selected sorting option
+            const selectedSorting = sortingDropdown.value;
+
+            // Sort the students based on the selected option
+            if (selectedSorting === "asc") {
+                students.sort((a, b) => (a.id - b.id)); // Sort in ascending order by student ID
+            } else if (selectedSorting === "desc") {
+                students.sort((a, b) => (b.id - a.id)); // Sort in descending order by student ID
+            } else if (selectedSorting === "random") {
+                students.sort(() => Math.random() - 0.5); // Shuffle the students randomly
+            }
+
+            // Re-display the students with the new sorting
+            currentPage = 1; // Reset to the first page
+            displayStudents(students, currentPage, studentsPerPage);
+            updatePaginationButtons();
+        });
+
+
+
         // Function to handle the "Next" button click
         function nextPage() {
             currentPage++;
