@@ -16,7 +16,29 @@
             <span class="batch">11<sup>th</sup> Batch, Department of CSE,</span>
             <span class="university">Jagannath University, Dhaka</span>
         </h2>
-    </div>    
+    </div>
+    
+    <!-- Add sorting and cards per page dropdowns in one line -->
+    <section class="filter-options">
+        <div class="sorting-options">
+            <label for="sorting">Sort by:</label>
+            <select id="sorting">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                <option value="random">Random</option>
+            </select>
+        </div>
+
+        <div class="cards-per-page">
+            <label for="cards">Cards per page:</label>
+            <select id="cards">
+                <option value="12">12</option>
+                <option value="24">24</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+            </select>
+        </div>
+    </section>
 
     <section class="student-profiles">
         <!-- Student cards will be generated dynamically here using JavaScript -->
