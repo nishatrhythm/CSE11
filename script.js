@@ -100,6 +100,23 @@ function displayStudents(students, page) {
     });
 }
 
+// Function to create and append pagination buttons
+function createPaginationButtons() {
+    const prevButton = document.createElement("button");
+    prevButton.id = "prevButton";
+    prevButton.classList.add("pagination-button", "pagination-previous");
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
+
+    const nextButton = document.createElement("button");
+    nextButton.id = "nextButton";
+    nextButton.classList.add("pagination-button", "pagination-next");
+    nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+
+    const paginationDiv = document.querySelector(".pagination");
+    paginationDiv.appendChild(prevButton);
+    paginationDiv.appendChild(nextButton);
+}
+
 // Function to fetch JSON data and generate student cards
 async function fetchAndGenerateStudentCards() {
     try {
@@ -218,3 +235,6 @@ async function fetchAndGenerateStudentCards() {
 
 // Call the function to fetch and generate student cards when the page loads
 window.addEventListener("load", fetchAndGenerateStudentCards);
+
+// Call the function to create and append pagination buttons
+createPaginationButtons();
