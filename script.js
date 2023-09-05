@@ -4,51 +4,6 @@ const studentsPerPage = 12;
 // Store the current page
 let currentPage = 1;
 
-function createFilterAndSearchBar() {
-    const filterSection = document.createElement("section");
-    filterSection.classList.add("filter-section");
-
-    // Sorting dropdown
-    const sortOrderLabel = document.createElement("label");
-    sortOrderLabel.innerHTML = '<i class="fas fa-sort-amount-down"></i> Sort By:';
-    const sortOrderSelect = document.createElement("select");
-    sortOrderSelect.id = "sortOrder";
-    const sortOptions = ["Ascending", "Descending", "Random"];
-    sortOptions.forEach((option) => {
-        const sortOption = document.createElement("option");
-        sortOption.value = option.toLowerCase();
-        sortOption.textContent = option;
-        sortOrderSelect.appendChild(sortOption);
-    });
-
-    // Create a div to hold the search input and icon
-    const searchContainer = document.createElement("div");
-    searchContainer.classList.add("search-container");
-
-    // Search input
-    const searchInput = document.createElement("input");
-    searchInput.type = "text";
-    searchInput.id = "searchBar";
-    searchInput.placeholder = "Search by name...";
-
-    // Search icon
-    const searchIcon = document.createElement("i");
-    searchIcon.classList.add("fas", "fa-search");
-
-    // Append elements to the search container
-    searchContainer.appendChild(searchIcon);
-    searchContainer.appendChild(searchInput);
-
-    // Append elements to the filter section
-    filterSection.appendChild(sortOrderLabel);
-    filterSection.appendChild(sortOrderSelect);
-    filterSection.appendChild(searchContainer);
-
-    // Append the filter and search bar to the appropriate container in your HTML
-    const studentProfilesContainer = document.querySelector(".student-profiles");
-    studentProfilesContainer.parentNode.insertBefore(filterSection, studentProfilesContainer);
-}
-
 // Function to create a student card element
 function createStudentCard(student, searchQuery = "") {
     const card = document.createElement("div");
@@ -263,9 +218,3 @@ async function fetchAndGenerateStudentCards() {
 
 // Call the function to fetch and generate student cards when the page loads
 window.addEventListener("load", fetchAndGenerateStudentCards);
-
-// Call the function to generate filter and search bar when the page loads
-window.addEventListener("load", () => {
-    createFilterAndSearchBar(); // Generate and insert filter and search bar
-    fetchAndGenerateStudentCards(); // Fetch and generate student cards
-});
