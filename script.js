@@ -148,8 +148,19 @@ async function fetchAndGenerateStudentCards() {
             const prevButton = document.querySelector(".pagination-previous");
             const nextButton = document.querySelector(".pagination-next");
 
+            const searchValue = searchInput.value.toLowerCase();
+
+            // Filter students based on search input
+            const filteredStudents = students.filter((student) => {
+                const searchData = `${student.name} B1903050${student.id} ${student.school} ${student.college} ${student.hometown}`.toLowerCase();
+                return searchData.includes(searchValue);
+            });
+
+            // Sort and update pagination based on the filtered students
+            const totalFilteredStudents = filteredStudents.length;
+
             prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === Math.ceil(students.length / studentsPerPage);
+            nextButton.disabled = currentPage === Math.ceil(totalFilteredStudents / studentsPerPage) || totalFilteredStudents <= studentsPerPage;
         }
 
         // Event listeners for pagination buttons
