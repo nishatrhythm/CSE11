@@ -314,30 +314,41 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    max-width: 400px; /* Adjust the max-width as needed */
-    margin: 0 auto; /* Center-align the container horizontally */
+    max-width: 400px;
+    /* Adjust the max-width as needed */
+    margin: 0 auto;
+    /* Center-align the container horizontally */
     margin-top: 30px;
+    animation-duration: 0.5s;
+    /* Animation duration in seconds */
+    animation-timing-function: ease-in-out;
+    /* Animation timing function */
 }
 
 /* Style for the search input */
 #searchInput {
     flex-grow: 1;
-    border: none;
+    border: 2px solid #f2f2f2; /* Add a default border */
     background-color: #f2f2f2;
     padding: 10px;
     padding-left: 25px;
     border-radius: 25px;
     font-size: 16px;
-    border-top-right-radius: 0; /* Rectangle shape for top-right corner */
-    border-bottom-right-radius: 0; /* Rectangle shape for bottom-right corner */
-    outline-color: #3498db; /* Replace with your desired color */
+    border-top-right-radius: 0;
+    /* Rectangle shape for top-right corner */
+    border-bottom-right-radius: 0;
+    /* Rectangle shape for bottom-right corner */
+    outline-color: #3498db;
+    /* Replace with your desired color */
 }
 
 /* Style for the search button container */
 #searchButtonContainer {
     display: flex;
-    border-top-left-radius: 0; /* Rectangle shape for top-left corner */
-    border-bottom-left-radius: 0; /* Rectangle shape for bottom-left corner */
+    border-top-left-radius: 0;
+    /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0;
+    /* Rectangle shape for bottom-left corner */
 }
 
 /* Style for the search button */
@@ -349,8 +360,10 @@ body {
     color: #fff;
     cursor: pointer;
     border-radius: 25px;
-    border-top-left-radius: 0; /* Rectangle shape for top-left corner */
-    border-bottom-left-radius: 0; /* Rectangle shape for bottom-left corner */
+    border-top-left-radius: 0;
+    /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0;
+    /* Rectangle shape for bottom-left corner */
     transition: background-color 0.3s ease;
 }
 
@@ -362,6 +375,51 @@ body {
 /* Style for the search button on hover */
 #searchButton:hover {
     background-color: #0056b3;
+}
+
+/* Animation for the shaky effect */
+@keyframes shaky {
+
+    10%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    80% {
+        transform: translateX(5px);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    60% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Apply the shaky animation to the search container when clicked */
+#searchContainer.shaky {
+    animation: shaky 0.5s;
+}
+
+/* Add a red border to the input element */
+#searchInput.red-border {
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.1); /* Slightly reddish background color with opacity */
+}
+
+/* Style for the placeholder text when the search input has the red-border class */
+#searchInput.red-border::placeholder {
+    color: red;
 }
 
 /* Footer styles */

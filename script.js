@@ -231,10 +231,17 @@ async function fetchAndGenerateStudentCards() {
                     alert("No matching students found.");
                 }
             } else {
-                // If the search input is empty, display all students
-                currentPage = 1; // Reset to the first page
-                displayStudents(students, currentPage, studentsPerPage);
-                updatePaginationButtons();
+                // If the search input is empty, add the "shaky" class for animation
+                searchContainer.classList.add("shaky");
+        
+                // Add the red border class to the input element
+                searchInput.classList.add("red-border");
+        
+                // Remove the "shaky" class and red border class after the animation duration
+                setTimeout(() => {
+                    searchContainer.classList.remove("shaky");
+                    searchInput.classList.remove("red-border");
+                }, 500); // Adjust the duration to match the animation duration in CSS
             }
         });
 
