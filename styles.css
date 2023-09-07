@@ -67,9 +67,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 30px 0;
+    margin: 20px 0;
     padding: 0 150px;
     margin-bottom: 30px;
+    flex: 1;
 }
 
 /* Unique styles for student cards with animation */
@@ -304,51 +305,142 @@ body {
     margin-left: 8px;
 }
 
-/* Add styles for the highlighted class */
-.highlighted {
-    background-color: yellow; /* Change to your preferred highlight color */
-    font-weight: bold;
-}
-
-/* Styles for the filter section */
-.filter-section {
+/* Style for the search container */
+.search-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: 20px auto;
-    max-width: 800px;
-    padding: 20px;
-    background-color: #f0f0f0; /* Background color */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.filter-section label {
-    font-size: 18px;
-    color: #333; /* Text color */
-    display: flex;
-    align-items: center;
-}
-
-.filter-section select,
-#searchBar {
-    flex: 1;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 5px;
-    background-position: right 10px center;
-    background-size: 20px; /* Adjust icon size */
-}
-
-.filter-section select {
-    background-image: url('angle-down.png'); /* Add your sort icon image */
+    max-width: 400px;
+    /* Adjust the max-width as needed */
+    margin: 0 auto;
+    /* Center-align the container horizontally */
+    margin-top: 30px;
+    animation-duration: 0.5s;
+    /* Animation duration in seconds */
+    animation-timing-function: ease-in-out;
+    /* Animation timing function */
 }
 
 /* Style for the search input */
-#searchBar {
-    background-image: url('search.png'); /* Add your search icon image */
-    margin-left: 10px; /* Add some spacing between select and input */
+#searchInput {
+    flex-grow: 1;
+    border: 2px solid #f2f2f2; /* Add a default border */
+    background-color: #f2f2f2;
+    padding: 10px;
+    padding-left: 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    border-top-right-radius: 0;
+    /* Rectangle shape for top-right corner */
+    border-bottom-right-radius: 0;
+    /* Rectangle shape for bottom-right corner */
+    outline-color: #3498db;
+    /* Replace with your desired color */
+}
+
+/* Style for the search button container */
+#searchButtonContainer {
+    display: flex;
+    border-top-left-radius: 0;
+    /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0;
+    /* Rectangle shape for bottom-left corner */
+}
+
+/* Style for the search button */
+#searchButton {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    border-top-left-radius: 0;
+    /* Rectangle shape for top-left corner */
+    border-bottom-left-radius: 0;
+    /* Rectangle shape for bottom-left corner */
+    transition: background-color 0.3s ease;
+}
+
+/* Style for the search button icon */
+#searchButton i {
+    margin-right: 5px;
+}
+
+/* Style for the search button on hover */
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+/* Style for highlighted text within student-info */
+.highlight {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted School text within student-info */
+.student-info .highlight-school {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted College text within student-info */
+.student-info .highlight-college {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted Hometown text within student-info */
+.student-info .highlight-hometown {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Animation for the shaky effect */
+@keyframes shaky {
+
+    10%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    80% {
+        transform: translateX(5px);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateX(-10px);
+    }
+
+    40%,
+    60% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Apply the shaky animation to the search container when clicked */
+#searchContainer.shaky {
+    animation: shaky 0.5s;
+}
+
+/* Add a red border to the input element */
+#searchInput.red-border {
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.1); /* Slightly reddish background color with opacity */
+}
+
+/* Style for the placeholder text when the search input has the red-border class */
+#searchInput.red-border::placeholder {
+    color: red;
 }
 
 /* Footer styles */
@@ -363,17 +455,21 @@ body {
 
 /* Add this CSS to your styles.css file */
 .footer a {
-    color: inherit; /* Use the default text color */
-    text-decoration: underline; /* Underline the link text */
+    color: inherit;
+    /* Use the default text color */
+    text-decoration: underline;
+    /* Underline the link text */
 }
 
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -488,7 +584,9 @@ body {
     .navbar h2 {
         font-size: 16px;
     }
-    .batch, .university {
+
+    .batch,
+    .university {
         display: block;
     }
 }
@@ -497,7 +595,9 @@ body {
     .navbar h2 {
         font-size: 16px;
     }
-    .batch, .university {
+
+    .batch,
+    .university {
         display: block;
     }
 }

@@ -18,16 +18,35 @@
         </h2>
     </div>
 
-    <!-- Filter section -->
-    <section class="filter-section">
-        <label for="sortOrder"><i class="fas fa-sort-amount-down"></i> Sort Order:</label>
-        <select id="sortOrder">
-            <option value="ascending">Ascending</option>
-            <option value="descending">Descending</option>
-            <option value="random">Random</option>
-        </select>
-        <label for="searchBar"><i class="fas fa-search"></i> Search:</label>
-        <input type="text" id="searchBar" placeholder="Search by name...">
+    <section class="search-bar">
+        <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" class="" placeholder="Search anything...">
+            <button id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </section>       
+
+    <!-- Add sorting and cards per page dropdowns in one line -->
+    <section class="filter-options">
+        <div class="sorting-options">
+            <label for="sorting">Sort by ID:</label>
+            <select id="sorting">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                <option value="random">Random</option>
+            </select>
+        </div>
+
+        <div class="cards-per-page">
+            <label for="cards">Cards per page:</label>
+            <select id="cards">
+                <option value="12">12</option>
+                <option value="24">24</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+            </select>
+        </div>
     </section>
 
     <section class="student-profiles">
@@ -35,7 +54,15 @@
     </section>
 
     <div class="pagination">
-        <!-- Pagination buttons will be generated dynamically here using JavaScript -->
+        <!-- Add these classes to your pagination buttons -->
+        <button id="prevButton" class="pagination-button pagination-previous">
+            <i class="fas fa-chevron-left"></i>
+            Previous
+        </button>
+
+        <button id="nextButton" class="pagination-button pagination-next">
+            Next <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 
     <!-- Add your footer here -->
