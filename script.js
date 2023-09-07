@@ -124,7 +124,9 @@ async function fetchAndGenerateStudentCards() {
                 displayStudents(students, currentPage, studentsPerPage);
             }
 
+            // Update pagination buttons and call highlightCardContent
             updatePaginationButtons();
+            highlightCardContent(searchInput.value.trim().toLowerCase()); // Add this line
         });
 
         // Function to handle the "Next" button click
@@ -180,6 +182,9 @@ async function fetchAndGenerateStudentCards() {
             displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
             updatePaginationButtons();
             scrollToTop();
+
+            // Call highlightCardContent again after displaying students
+            highlightCardContent(searchInput.value.trim().toLowerCase());
         });
 
         nextButton.addEventListener("click", () => {
@@ -187,6 +192,9 @@ async function fetchAndGenerateStudentCards() {
             displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
             updatePaginationButtons();
             scrollToTop();
+
+            // Call highlightCardContent again after displaying students
+            highlightCardContent(searchInput.value.trim().toLowerCase());
         });
 
         // Add event listener to the cards per page dropdown
@@ -205,7 +213,9 @@ async function fetchAndGenerateStudentCards() {
                 displayStudents(students, currentPage, studentsPerPage);
             }
 
+            // Update pagination buttons and call highlightCardContent
             updatePaginationButtons();
+            highlightCardContent(searchInput.value.trim().toLowerCase()); // Add this line
             scrollToTop();
         });
 
@@ -228,6 +238,7 @@ async function fetchAndGenerateStudentCards() {
 
         // Event listener for the search button
         const searchButton = document.getElementById("searchButton");
+
         searchButton.addEventListener("click", () => {
             const searchInput = document.getElementById("searchInput");
             const searchQuery = searchInput.value.trim(); // Get the search query and remove leading/trailing spaces
@@ -263,6 +274,9 @@ async function fetchAndGenerateStudentCards() {
                     searchInput.classList.remove("red-border");
                 }, 500); // Adjust the duration to match the animation duration in CSS
             }
+
+            // Call the highlightCardContent function after displaying students
+            highlightCardContent(searchQuery);
         });
 
         // Event listener for real-time search
@@ -318,6 +332,9 @@ function highlightCardContent(searchQuery) {
     const highlightedText = studentProfiles.querySelectorAll(".highlight");
     highlightedText.forEach((element) => {
         element.classList.remove("highlight");
+        element.classList.remove("highlight-school"); // Remove the specific highlight classes
+        element.classList.remove("highlight-college"); // Remove the specific highlight classes
+        element.classList.remove("highlight-hometown"); // Remove the specific highlight classes
     });
 
     // Highlight new search results in all card content
