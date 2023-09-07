@@ -71,9 +71,6 @@ body {
     padding: 0 150px;
     margin-bottom: 30px;
     flex: 1;
-    /* Allow content to grow and fill available space */
-    overflow-y: auto;
-    /* Add vertical scroll if needed for content */
 }
 
 /* Unique styles for student cards with animation */

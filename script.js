@@ -115,7 +115,15 @@ async function fetchAndGenerateStudentCards() {
 
             // Re-display the students with the new sorting
             currentPage = 1; // Reset to the first page
-            displayStudents(students, currentPage, studentsPerPage);
+
+            // Check if there is a search query
+            if (searchInput.value.trim() !== "") {
+                const filteredStudents = filterStudents(searchInput.value.trim().toLowerCase(), students);
+                displayStudents(filteredStudents, currentPage, studentsPerPage);
+            } else {
+                displayStudents(students, currentPage, studentsPerPage);
+            }
+
             updatePaginationButtons();
         });
 
@@ -188,10 +196,18 @@ async function fetchAndGenerateStudentCards() {
             const selectedCardsPerPage = parseInt(cardsPerPageDropdown.value, 10);
             currentPage = 1;
             studentsPerPage = selectedCardsPerPage; // Update the 'studentsPerPage' variable
-            displayStudents(students, currentPage, studentsPerPage); // Pass 'studentsPerPage' as the third argument
+        
+            // Check if there is a search query
+            if (searchInput.value.trim() !== "") {
+                const filteredStudents = filterStudents(searchInput.value.trim().toLowerCase(), students);
+                displayStudents(filteredStudents, currentPage, studentsPerPage);
+            } else {
+                displayStudents(students, currentPage, studentsPerPage);
+            }
+        
             updatePaginationButtons();
             scrollToTop();
-        });
+        });        
 
         // Function to filter students based on search query (case-insensitive)
         function filterStudents(query, students) {
@@ -233,10 +249,10 @@ async function fetchAndGenerateStudentCards() {
             } else {
                 // If the search input is empty, add the "shaky" class for animation
                 searchContainer.classList.add("shaky");
-        
+
                 // Add the red border class to the input element
                 searchInput.classList.add("red-border");
-        
+
                 // Remove the "shaky" class and red border class after the animation duration
                 setTimeout(() => {
                     searchContainer.classList.remove("shaky");
