@@ -196,7 +196,7 @@ async function fetchAndGenerateStudentCards() {
             const selectedCardsPerPage = parseInt(cardsPerPageDropdown.value, 10);
             currentPage = 1;
             studentsPerPage = selectedCardsPerPage; // Update the 'studentsPerPage' variable
-        
+
             // Check if there is a search query
             if (searchInput.value.trim() !== "") {
                 const filteredStudents = filterStudents(searchInput.value.trim().toLowerCase(), students);
@@ -204,10 +204,10 @@ async function fetchAndGenerateStudentCards() {
             } else {
                 displayStudents(students, currentPage, studentsPerPage);
             }
-        
+
             updatePaginationButtons();
             scrollToTop();
-        });        
+        });
 
         // Function to filter students based on search query (case-insensitive)
         function filterStudents(query, students) {
@@ -275,6 +275,22 @@ async function fetchAndGenerateStudentCards() {
             updatePaginationButtons();
         });
 
+        // Event listener for real-time search
+        searchInput.addEventListener("input", () => {
+            const searchQuery = searchInput.value.trim().toLowerCase();
+
+            // Filter students based on the search query
+            const filteredStudents = filterStudents(searchQuery, students);
+
+            // Display the filtered students
+            currentPage = 1; // Reset to the first page
+            displayStudents(filteredStudents, currentPage, studentsPerPage);
+            updatePaginationButtons();
+
+            // Highlight search results in all card content
+            highlightCardContent(searchQuery);
+        });
+
         // Call the function to display the initial page of students
         displayStudents(students, currentPage, studentsPerPage);
         updatePaginationButtons();
@@ -287,6 +303,38 @@ async function fetchAndGenerateStudentCards() {
 
         prevButton.disabled = true;
         nextButton.disabled = true;
+    }
+}
+
+// Function to highlight search results in student card content
+function highlightCardContent(searchQuery) {
+    const studentProfiles = document.querySelector(".student-profiles");
+
+    // Remove previous highlights
+    const highlightedText = studentProfiles.querySelectorAll(".highlight");
+    highlightedText.forEach((element) => {
+        element.classList.remove("highlight");
+    });
+
+    // Highlight new search results in all card content
+    if (searchQuery.trim() !== "") {
+        const searchRegex = new RegExp(searchQuery, "gi"); // "gi" for global and case-insensitive search
+        const cardContentElements = studentProfiles.querySelectorAll(".student-name, .student-id, .student-info td"); // Include td elements for School, College, and Hometown
+
+        cardContentElements.forEach((element) => {
+            const contentText = element.textContent;
+            const highlightedHTML = contentText.replace(searchRegex, (match) => `<span class="highlight">${match}</span>`);
+            element.innerHTML = highlightedHTML;
+
+            // Add specific CSS classes for School, College, and Hometown
+            if (element.parentElement.classList.contains("school")) {
+                element.classList.add("highlight-school");
+            } else if (element.parentElement.classList.contains("college")) {
+                element.classList.add("highlight-college");
+            } else if (element.parentElement.classList.contains("hometown")) {
+                element.classList.add("highlight-hometown");
+            }
+        });
     }
 }
 

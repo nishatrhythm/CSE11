@@ -374,6 +374,30 @@ body {
     background-color: #0056b3;
 }
 
+/* Style for highlighted text within student-info */
+.highlight {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted School text within student-info */
+.student-info .highlight-school {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted College text within student-info */
+.student-info .highlight-college {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
+/* Style for highlighted Hometown text within student-info */
+.student-info .highlight-hometown {
+    background-color: yellow; /* Change this to your desired highlight background color */
+    font-weight: bold;
+}
+
 /* Animation for the shaky effect */
 @keyframes shaky {
 
