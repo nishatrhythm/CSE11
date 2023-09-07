@@ -259,7 +259,7 @@ async function fetchAndGenerateStudentCards() {
                 } else {
                     // If no matching students found, display a message or handle it as needed
                     // For example, you can show an alert or a message on the page
-                    alert("No matching students found.");
+                    alert("Your query did not bring any results. ");
                 }
             } else {
                 // If the search input is empty, add the "shaky" class for animation
