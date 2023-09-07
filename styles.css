@@ -235,6 +235,34 @@ body {
     /* Change the hover color as needed */
 }
 
+/* Styling for Sorting and Cards Per Page dropdowns */
+.filter-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    border-radius: 8px;
+    padding: 0 160px;
+}
+
+.filter-options label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter-options select {
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-options select:focus {
+    outline: none;
+    border-color: #007bff;
+    /* Highlight border color on focus */
+}
+
 /* Pagination styles */
 .pagination {
     margin-top: 20px;
@@ -310,7 +338,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px !important;
     max-width: 400px;
     /* Adjust the max-width as needed */
     margin: 0 auto;
@@ -325,7 +353,7 @@ body {
 /* Style for the search input */
 #searchInput {
     flex-grow: 1;
-    border: 2px solid #f2f2f2; /* Add a default border */
+    border: none;
     background-color: #f2f2f2;
     padding: 10px;
     padding-left: 25px;
@@ -372,29 +400,34 @@ body {
 /* Style for the search button on hover */
 #searchButton:hover {
     background-color: #0056b3;
+    outline-color: #0056b3;
 }
 
 /* Style for highlighted text within student-info */
 .highlight {
-    background-color: yellow; /* Change this to your desired highlight background color */
+    background-color: yellow;
+    /* Change this to your desired highlight background color */
     font-weight: bold;
 }
 
 /* Style for highlighted School text within student-info */
 .student-info .highlight-school {
-    background-color: yellow; /* Change this to your desired highlight background color */
+    background-color: yellow;
+    /* Change this to your desired highlight background color */
     font-weight: bold;
 }
 
 /* Style for highlighted College text within student-info */
 .student-info .highlight-college {
-    background-color: yellow; /* Change this to your desired highlight background color */
+    background-color: yellow;
+    /* Change this to your desired highlight background color */
     font-weight: bold;
 }
 
 /* Style for highlighted Hometown text within student-info */
 .student-info .highlight-hometown {
-    background-color: yellow; /* Change this to your desired highlight background color */
+    background-color: yellow;
+    /* Change this to your desired highlight background color */
     font-weight: bold;
 }
 
@@ -435,7 +468,8 @@ body {
 /* Add a red border to the input element */
 #searchInput.red-border {
     border: 2px solid red;
-    background-color: rgba(255, 0, 0, 0.1); /* Slightly reddish background color with opacity */
+    background-color: rgba(255, 0, 0, 0.1);
+    /* Slightly reddish background color with opacity */
 }
 
 /* Style for the placeholder text when the search input has the red-border class */
@@ -484,6 +518,14 @@ body {
     .student-card {
         width: calc(25% - 20px);
     }
+
+    .search-container {
+        max-width: 500px;
+    }
+
+    .filter-options {
+        padding: 0 112px;
+    }
 }
 
 /* Large Desktop Styles */
@@ -506,6 +548,10 @@ body {
     .student-card {
         width: calc(50% - 20px);
     }
+
+    .filter-options {
+        padding: 0 190px;
+    }
 }
 
 /* Large Desktop Styles */
@@ -517,6 +563,10 @@ body {
     .student-card {
         width: calc(50% - 20px);
     }
+
+    .filter-options {
+        padding: 0 160px;
+    }
 }
 
 /* Tablet Styles */
@@ -527,6 +577,10 @@ body {
 
     .student-card {
         width: calc(50% - 20px);
+    }
+
+    .filter-options {
+        padding: 0 90px;
     }
 }
 
@@ -563,6 +617,10 @@ body {
     .footer {
         font-size: 14px;
     }
+
+    .filter-options {
+        padding: 0 30px;
+    }
 }
 
 /* Tablet Styles */
@@ -588,6 +646,52 @@ body {
     .batch,
     .university {
         display: block;
+    }
+
+    .filter-options {
+        flex-direction: column;
+        /* Change flex direction to column for smaller screens */
+        align-items: flex-start;
+        /* Align items to the start for vertical layout */
+        margin: 20px 0;
+        /* Reduce margin for smaller screens */
+        padding: 30px;
+        /* Add padding for smaller screens */
+    }
+
+    .filter-options label {
+        font-size: 14px;
+        /* Reduce font size for labels on smaller screens */
+        margin-bottom: 5px;
+        /* Add spacing between labels for vertical layout */
+    }
+
+    .filter-options select {
+        font-size: 14px;
+        /* Reduce font size for select elements on smaller screens */
+        width: 50%;
+        /* Set select elements to full width */
+    }
+
+    .filter-options .sorting-options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+        /* Add spacing between Sort by ID and Ascending select */
+    }
+
+    .filter-options .cards-per-page {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .search-container {
+        max-width: calc(100% - 40px);
+        /* Subtract 20px from each side for left and right spacing */
     }
 }
 
@@ -637,5 +741,25 @@ body {
 @media screen and (max-width: 660px) {
     .footer {
         font-size: 12px;
+    }
+}
+
+/* Add this CSS to control the search container width for smaller screens */
+@media screen and (max-width: 350px) {
+    .search-container {
+        max-width: calc(100% - 40px);
+    }
+
+    /* Adjust the search input and button styles for smaller screens */
+    #searchInput {
+        width: 80%; /* Adjust the input width as needed */
+        font-size: 11px;
+    }
+
+    #searchButton {
+        width: 20%; /* Adjust the button width as needed */
+        display: flex; /* Use flexbox to center the icon */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
     }
 }
