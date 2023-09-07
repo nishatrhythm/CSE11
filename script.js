@@ -240,6 +240,10 @@ async function fetchAndGenerateStudentCards() {
                     // If there are matching students, display them
                     currentPage = 1; // Reset to the first page
                     displayStudents(filteredStudents, currentPage, studentsPerPage);
+
+                    // Highlight the searched text
+                    highlightCardContent(searchQuery);
+
                     updatePaginationButtons();
                 } else {
                     // If no matching students found, display a message or handle it as needed
