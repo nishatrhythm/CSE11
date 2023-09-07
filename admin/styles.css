@@ -1,0 +1,75 @@
+/* Font import and universal font-family declaration */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Add this to your styles.css file or within a <style> tag in the HTML document */
+.polite-background {
+    background-color: #f8f9fa; /* Use your preferred background color */
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Add a subtle border-radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+}
+
+/* Add this style to make the labels bold */
+.polite-background label {
+    font-weight: bold;
+}
+
+/* Add this CSS to style the social links table */
+.social-links-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.social-links-table td {
+    padding: 5px;
+    text-align: center;
+}
+
+.social-links-table label {
+    font-weight: bold;
+    display: block;
+}
+
+.social-links-table .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links-table .input-group-prepend {
+    flex: 0 0 auto;
+}
+
+/* Add margin to the Student Image label for spacing from the top */
+.form-group.mb-3 label[for="image"] {
+    margin-top: 20px; /* Adjust the margin value as needed */
+    margin-bottom: 20px;
+}
+
+/* Add padding to the Add Student button and center align it */
+.form-group button[type="submit"] {
+    padding: 10px 20px; /* Adjust padding as needed */
+    display: block;
+    margin: 0 auto; /* Center align the button horizontally */
+    margin-top: 50px;
+}
+
+.container {
+    margin-bottom: 20px; /* Add spacing after the form */
+}
+
+.table-responsive {
+    background-color: #f8f9fa; /* Your preferred background color */
+}
+
+/* Center-align the thead elements in the table */
+#studentTable thead th {
+    text-align: center;
+}
