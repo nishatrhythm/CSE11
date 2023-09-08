@@ -225,6 +225,10 @@ const viewId = urlParams.get("viewId");
 
 // Function to populate the form fields
 function populateFormFields(student) {
+    // Change the heading text to "View Student Information"
+    const heading = document.getElementById("heading");
+    headingText.textContent = "View Student Information";
+
     const studentIdInput = document.getElementById("id");
     studentIdInput.value = student.id;
     studentIdInput.disabled = true;
@@ -270,6 +274,9 @@ function populateFormFields(student) {
     if (imageElement) {
         imageElement.src = `/images/${student.id}.jpg`;
     }
+
+    // Hide the "Add Student" button
+    submitButton.style.display = "none";
 }
 
 // Check if viewId exists and fetch the corresponding student data
