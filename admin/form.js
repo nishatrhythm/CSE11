@@ -175,7 +175,7 @@ function createSocialLinkRow(labelText, inputName) {
 }
 
 // Function to fetch and display student data based on viewId
-function fetchAndDisplayStudent() {
+function fetchAndDisplayViewStudent() {
     // Get the viewId query parameter from the URL
     const params = new URLSearchParams(window.location.search);
     const viewId = params.get('viewId');
@@ -216,8 +216,53 @@ function fetchAndDisplayStudent() {
     }
 }
 
-// Call the fetchAndDisplayStudent function when the page loads
-document.addEventListener('DOMContentLoaded', fetchAndDisplayStudent);
+// Call the fetchAndDisplayViewStudent function when the page loads
+document.addEventListener('DOMContentLoaded', fetchAndDisplayViewStudent);
+
+// Function to fetch and display student data based on editId
+function fetchAndDisplayEditStudent() {
+    // Get the editId query parameter from the URL
+    const params = new URLSearchParams(window.location.search);
+    const editId = params.get('editId');
+
+    // Check if editId is not null
+    if (editId) {
+        // Fetch student data from students.json
+        fetch('/students.json')
+            .then(response => response.json())
+            .then(data => {
+                // Find the student with the matching ID
+                const student = data.find(student => student.id === editId);
+
+                if (student) {
+                    // Populate the form fields with the student's data
+                    document.getElementById('id').value = student.id;
+                    document.getElementById('name').value = student.name;
+                    document.getElementById('school').value = student.school;
+                    document.getElementById('college').value = student.college;
+                    document.getElementById('hometown').value = student.hometown;
+                    document.getElementById('facebook').value = student.socialLinks.facebook;
+                    document.getElementById('twitter').value = student.socialLinks.twitter;
+                    document.getElementById('linkedin').value = student.socialLinks.linkedin;
+                    document.getElementById('github').value = student.socialLinks.github;
+
+                    // Populate the Student Image
+                    const imageElement = document.getElementById('student-image');
+                    imageElement.src = `/images/${student.id}.jpg`;
+                } else {
+                    console.error('Student not found.');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading student data:', error);
+            });
+    } else {
+        console.error('Edit ID not specified.');
+    }
+}
+
+// Call the fetchAndDisplayEditStudent function when the page loads for editing
+document.addEventListener('DOMContentLoaded', fetchAndDisplayEditStudent);
 
 // Add this code at the end of your form.js file
 const urlParams = new URLSearchParams(window.location.search);

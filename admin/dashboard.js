@@ -97,8 +97,13 @@ function viewStudent(studentId) {
     window.location.href = `/admin/form.html?viewId=${studentNumber}`;
 }
 
+// Function to edit a student's details
 function editStudent(studentId) {
-    // Implement your logic for editing a student's details
+    // Extract the last two characters (student number) from the studentId
+    const studentNumber = studentId.substr(-2);
+
+    // Redirect to form.html with the editId query parameter for editing
+    window.location.href = `/admin/form.html?editId=${studentNumber}`;
 }
 
 function deleteStudent(studentId) {
