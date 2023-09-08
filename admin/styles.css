@@ -83,9 +83,11 @@
 /* Add this to your styles.css file or within a <style> tag in the HTML document */
 .polite-background {
     background-color: #f8f9fa; /* Use your preferred background color */
-    padding: 20px; /* Adjust padding as needed */
+    padding: 40px; /* Adjust padding as needed */
     border-radius: 10px; /* Add a subtle border-radius */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    margin-right: 25%;
+    margin-left: 25%;
 }
 
 /* Add this style to make the labels bold */
@@ -95,6 +97,7 @@
 
 /* Add this CSS to style the social links table */
 .social-links-table {
+    margin-top: 40px;
     width: 100%;
     border-collapse: collapse;
 }
@@ -119,10 +122,43 @@
     flex: 0 0 auto;
 }
 
-/* Add margin to the Student Image label for spacing from the top */
+/* Update the CSS to style the social links table rows */
+.social-links-table tr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.social-links-table td {
+    width: 48%; /* Adjust the width as needed */
+}
+
+/* Add this CSS to style the social links table labels */
+.social-links-table label {
+    font-weight: bold;
+    margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing */
+    display: block;
+}
+
+/* Add a media query for smaller screens to stack social links vertically */
+@media (max-width: 768px) {
+    .social-links-table td {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+/* Add padding to the right of the Student Image label */
 .form-group.mb-3 label[for="image"] {
-    margin-top: 20px; /* Adjust the margin value as needed */
+    margin-top: 20px; /* Adjust the margin-top value as needed */
     margin-bottom: 20px;
+    padding-right: 10px; /* Add padding to the right of the label */
+}
+
+/* Move the "Choose file" button to a new line */
+.form-group.mb-3 input[type="file"] {
+    padding-left: 15px;
 }
 
 /* Add padding to the Add Student button and center align it */
@@ -131,6 +167,15 @@
     display: block;
     margin: 0 auto; /* Center align the button horizontally */
     margin-top: 50px;
+}
+
+/* Center-align the content within the "col-md-6" container */
+.col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px; /* Limit the maximum width of the form container */
+    margin: 0 auto; /* Center-align the container horizontally */
 }
 
 .container {

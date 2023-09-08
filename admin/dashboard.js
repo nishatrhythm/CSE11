@@ -88,31 +88,22 @@ function fetchAndDisplayStudents() {
         });
 }
 
+// Function to view a student's details
+function viewStudent(studentId) {
+    // Extract the last two characters (student number) from the studentId
+    const studentNumber = studentId.substr(-2);
+
+    // Redirect to form.html with the viewId query parameter
+    window.location.href = `/admin/form.html?viewId=${studentNumber}`;
+}
+
+function editStudent(studentId) {
+    // Implement your logic for editing a student's details
+}
+
+function deleteStudent(studentId) {
+    // Implement your logic for deleting a student's record
+}
+
 // Call the fetchAndDisplayStudents function when the page loads
 $(document).ready(fetchAndDisplayStudents);
-
-// You can define your viewStudent, editStudent, and deleteStudent functions here
-function viewStudent(studentId) {
-    // Implement your logic for viewing a student's details
-}
-
-function editStudent(studentId) {
-    // Implement your logic for editing a student's details
-}
-
-function deleteStudent(studentId) {
-    // Implement your logic for deleting a student's record
-}
-
-// You can define your viewStudent, editStudent, and deleteStudent functions here
-function viewStudent(studentId) {
-    // Implement your logic for viewing a student's details
-}
-
-function editStudent(studentId) {
-    // Implement your logic for editing a student's details
-}
-
-function deleteStudent(studentId) {
-    // Implement your logic for deleting a student's record
-}
