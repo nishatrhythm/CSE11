@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student Information</title>
+    <title>Student Information</title>
 
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
@@ -17,15 +17,24 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <h2>Admin Panel</h2>
+        </div>
+        <div class="navbar-right">
+            <a href="dashboard.html" class="nav-button">Dashboard</a>
+        </div>        
+    </div> 
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="text-center mt-5">Update Student Information</h1>
+                <h1 class="text-center mt-5">Add Student Information</h1>
 
                 <form id="studentForm" enctype="multipart/form-data" class="mt-4 polite-background">
                     <!-- Student ID -->
                     <div class="form-group mb-3">
-                        <label for="id">ID:</label>
+                        <label for="id">Student ID:</label>
                         <input type="text" id="id" name="id" class="form-control" required>
                     </div>
 
@@ -116,6 +125,11 @@
                                 </td>
                             </tr>
                         </table>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add Student</button>
                     </div>
                 </form>
             </div>

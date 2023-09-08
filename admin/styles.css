@@ -8,6 +8,78 @@
     box-sizing: border-box;
 }
 
+/* Navbar styles with animated gradient background */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Align content to left and right */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 100;
+    padding: 0 110px;
+    color: white;
+    text-align: left;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #ff8a00, #e52e71, #f64f59, #c471ed, #12c2e9, #00d2ff);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s linear infinite alternate;
+}
+
+.navbar h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-button {
+    font-size: 16px;
+    text-decoration: none;
+    color: black; /* Text color is black */
+    padding: 10px 20px; /* Add padding to make it look like a button */
+    border: none;
+    border-radius: 5px;
+    background-color: white; /* Button background is white */
+    transition: background-color 0.3s ease; /* Add a transition effect for hover */
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0; /* Slightly darker background on hover */
+    color: black; /* Text color is black on hover */
+}
+
+/* Animation for the navbar background gradient */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Add this CSS to center-align the content in the "Student ID" and "Actions" columns */
+#studentTable tbody tr td:nth-child(1),
+#studentTable tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+/* Add this CSS to add some margin between the buttons in the "Actions" column */
+#studentTable tbody tr td:nth-child(3) .btn {
+    margin-right: 10px; /* Adjust the margin as needed to control the spacing between buttons */
+    width: 65px; /* Set a specific width for the buttons */
+}
+
 /* Add this to your styles.css file or within a <style> tag in the HTML document */
 .polite-background {
     background-color: #f8f9fa; /* Use your preferred background color */

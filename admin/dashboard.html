@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Admin Panel</title>
 
     <!-- Include Bootstrap CSS and DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
@@ -18,6 +18,15 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <h2>Admin Panel</h2>
+        </div>
+        <div class="navbar-right">
+            <a href="form.html" class="nav-button">Add Student</a>
+        </div>        
+    </div>   
+
     <div class="container mt-5">
         <h2 class="text-center">Student List</h2>
         <!-- Add a container for the table -->
@@ -25,8 +34,8 @@
             <table id="studentTable" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
