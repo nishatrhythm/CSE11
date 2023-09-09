@@ -238,3 +238,35 @@
 #studentTable thead th {
     text-align: center;
 }
+
+::selection {
+    background-color: blue;
+    color: white; /* Text color within the selection */
+}
+
+input, textarea {
+    caret-color: black;
+}
+
+/* Stylish text selection */
+::selection {
+    background-color: #3498db; /* Highlight color */
+    color: #ffffff; /* Text color within the selection */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Smooth cursor animation */
+input, textarea {
+    caret-color: #e74c3c; /* Cursor color */
+    transition: caret-color 0.3s ease; /* Smooth transition */
+    border: 2px solid #ecf0f1; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Spacing around input */
+}
+
+/* Hover effect for input and textarea */
+input:hover, textarea:hover {
+    border-color: #3498db; /* Border color on hover */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Box shadow on hover */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
