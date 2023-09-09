@@ -142,6 +142,54 @@
     display: block;
 }
 
+/* Custom Tooltip */
+.custom-tooltip {
+    position: absolute;
+    background-color: #ff5733; /* Warning-type background color */
+    color: #fff; /* Text color */
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    z-index: 1000;
+    pointer-events: none;
+    white-space: normal; /* Allow multiple lines of text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Adjust the maximum width as needed */
+    word-wrap: break-word; /* Allow long words to wrap */
+    line-height: 1.5; /* Add line-height for the gap between lines */
+    /* text-align: justify; */
+}
+
+/* Remove the arrow-style */
+.custom-tooltip::before {
+    display: none;
+}
+
+/* Add padding to the left of the i icon */
+.fas.fa-info-circle {
+    padding-left: 10px;
+}
+
+/* Add a warning color to the i icon */
+.warning-icon {
+    color: #ff5733; /* You can adjust the color code as needed */
+}
+
+/* Warning Text */
+.warning-text {
+    color: #ff5733; /* Warning-type color */
+    margin-top: -15px; /* Add some top margin for spacing */
+}
+
+/* "Learn more" Link */
+.warning-text a {
+    color: #ff5733; /* Warning-type color for the link */
+    text-decoration: underline; /* Add underline to the link */
+    margin-left: 5px; /* Add left margin for spacing */
+    font-weight: 600;
+}
+
 /* Add a media query for smaller screens to stack social links vertically */
 @media (max-width: 768px) {
     .social-links-table td {

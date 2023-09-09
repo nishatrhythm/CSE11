@@ -41,7 +41,6 @@ studentIdInput.id = "id";
 studentIdInput.name = "id";
 studentIdInput.className = "form-control";
 studentIdInput.required = true;
-studentIdInput.disabled = false;
 
 studentIdInputGroup.appendChild(studentIdInputGroupPrepend);
 studentIdInputGroup.appendChild(studentIdInput);
@@ -54,21 +53,70 @@ const nameDiv = createFormInput("Name:", "text", "name", "name", true);
 form.appendChild(nameDiv);
 
 // School
-const schoolDiv = createFormInput("School:", "text", "school", "school", true);
+const schoolDiv = createFormInput("School:", "text", "school", "school", false);
 form.appendChild(schoolDiv);
 
 // College
-const collegeDiv = createFormInput("College:", "text", "college", "college", true);
+const collegeDiv = createFormInput("College:", "text", "college", "college", false);
 form.appendChild(collegeDiv);
 
 // Hometown
-const hometownDiv = createFormInput("Hometown:", "text", "hometown", "hometown", true);
+const hometownDiv = createFormInput("Hometown:", "text", "hometown", "hometown", false);
 form.appendChild(hometownDiv);
 
-// Student Image
-const imageDiv = createFormInput("Student Image:", "file", "image", "image", true);
-imageDiv.querySelector("input").accept = ".jpg, .jpeg";
-form.appendChild(imageDiv);
+// Student Image Label (with information icon)
+const imageLabelDiv = document.createElement("div");
+imageLabelDiv.className = "form-group mb-3 d-flex align-items-center"; // Add a class for flex alignment
+
+const imageLabel = document.createElement("label");
+imageLabel.textContent = "Student Image:";
+imageLabelDiv.appendChild(imageLabel);
+
+// Create an information icon (i button)
+const infoIcon = document.createElement("i");
+infoIcon.className = "fas fa-info-circle ml-2 warning-icon"; // Add Font Awesome classes for the icon
+infoIcon.style.cursor = "pointer"; // Add a pointer cursor to indicate interactivity
+
+// Create a custom tooltip element
+const customTooltip = document.createElement("div");
+customTooltip.className = "custom-tooltip";
+customTooltip.textContent = "Local development prevents direct browser-based file uploads due to security restrictions.";
+customTooltip.style.display = "none"; // Initially hide the tooltip
+
+// Append the tooltip element to the information icon
+infoIcon.appendChild(customTooltip);
+
+// Add an event listener to show the tooltip on mouseover
+infoIcon.addEventListener("mouseover", function () {
+    customTooltip.style.display = "block"; // Show the tooltip
+});
+
+// Add an event listener to hide the tooltip on mouseout
+infoIcon.addEventListener("mouseout", function () {
+    customTooltip.style.display = "none"; // Hide the tooltip
+});
+
+// Append the information icon to the imageLabelDiv
+imageLabelDiv.appendChild(infoIcon);
+
+form.appendChild(imageLabelDiv);
+
+// Create a new paragraph element for the warning text
+const warningText = document.createElement("p");
+warningText.className = "warning-text";
+warningText.textContent = "Please add the image inside \"images\" folder.";
+
+// Create a "Learn more" link within the warning text
+const learnMoreLink = document.createElement("a");
+learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Replace with the actual link
+learnMoreLink.target = "_blank"; // Open link in a new tab
+learnMoreLink.textContent = "Learn more";
+
+// Append the "Learn more" link to the warning text
+warningText.appendChild(learnMoreLink);
+
+// Append the warning text to the form
+form.appendChild(warningText);
 
 // Social Links
 const socialLinksDiv = document.createElement("div");
@@ -161,7 +209,7 @@ function createSocialLinkRow(labelText, inputName) {
     input.type = "text";
     input.id = inputName;
     input.name = "socialLinks[" + inputName + "]";
-    input.required = true;
+    input.required = false;
     input.className = "form-control";
 
     inputGroup.appendChild(inputGroupPrepend);
@@ -200,10 +248,6 @@ function fetchAndDisplayViewStudent() {
                     document.getElementById('twitter').value = student.socialLinks.twitter;
                     document.getElementById('linkedin').value = student.socialLinks.linkedin;
                     document.getElementById('github').value = student.socialLinks.github;
-
-                    // Populate the Student Image
-                    const imageElement = document.getElementById('student-image');
-                    imageElement.src = `/images/${student.id}.jpg`;
                 } else {
                     console.error('Student not found.');
                 }
@@ -245,10 +289,7 @@ function fetchAndDisplayEditStudent() {
                     document.getElementById('twitter').value = student.socialLinks.twitter;
                     document.getElementById('linkedin').value = student.socialLinks.linkedin;
                     document.getElementById('github').value = student.socialLinks.github;
-
-                    // Populate the Student Image
-                    const imageElement = document.getElementById('student-image');
-                    imageElement.src = `/images/${student.id}.jpg`;
+                    ;
                 } else {
                     console.error('Student not found.');
                 }
@@ -269,10 +310,19 @@ const urlParams = new URLSearchParams(window.location.search);
 const viewId = urlParams.get("viewId");
 
 // Function to populate the form fields
-function populateFormFields(student) {
+function populateFormFieldsView(student) {
     // Change the heading text to "View Student Information"
     const heading = document.getElementById("heading");
     headingText.textContent = "View Student Information";
+
+    // Update the warning text
+    warningText.textContent = "Please see the image inside the \"images\" folder.";
+
+    // Update the "Learn more" link
+    learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Update the link for viewing
+
+    // Append the "Learn more" link to the warning text
+    warningText.appendChild(learnMoreLink);
 
     const studentIdInput = document.getElementById("id");
     studentIdInput.value = student.id;
@@ -310,16 +360,6 @@ function populateFormFields(student) {
     githubInput.value = student.socialLinks.github;
     githubInput.disabled = true;
 
-    // Make the file input non-editable
-    const imageInput = document.getElementById("image");
-    imageInput.disabled = true; // Make it non-editable
-
-    // Populate the Student Image (if available)
-    const imageElement = document.getElementById("student-image");
-    if (imageElement) {
-        imageElement.src = `/images/${student.id}.jpg`;
-    }
-
     // Hide the "Add Student" button
     submitButton.style.display = "none";
 }
@@ -331,7 +371,50 @@ if (viewId) {
         .then((data) => {
             const student = data.find((s) => s.id === viewId);
             if (student) {
-                populateFormFields(student);
+                populateFormFieldsView(student);
+            } else {
+                console.error(`Student with ID ${viewId} not found.`);
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching data: ", error);
+        });
+}
+
+const editId = urlParams.get("editId");
+
+// Function to populate the form fields
+function populateFormFieldsEdit(student) {
+    // Change the heading text to "View Student Information"
+    const heading = document.getElementById("heading");
+    headingText.textContent = "Update Student Information";
+
+    // Update the warning text
+    warningText.textContent = "Please update the image inside the \"images\" folder.";
+
+    // Update the "Learn more" link
+    learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Update the link for viewing
+
+    // Append the "Learn more" link to the warning text
+    warningText.appendChild(learnMoreLink);
+
+    const studentIdInput = document.getElementById("id");
+    studentIdInput.value = student.id;
+    studentIdInput.disabled = true;
+
+    // Update the button label to "Update Student"
+    const submitButton = document.querySelector(".btn.btn-primary");
+    submitButton.textContent = "Update Student";
+}
+
+// Check if editId exists and fetch the corresponding student data
+if (editId) {
+    fetch("/students.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const student = data.find((s) => s.id === editId);
+            if (student) {
+                populateFormFieldsEdit(student);
             } else {
                 console.error(`Student with ID ${viewId} not found.`);
             }
