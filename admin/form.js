@@ -423,3 +423,62 @@ if (editId) {
             console.error("Error fetching data: ", error);
         });
 }
+
+// Add an event listener to the form for submission
+const studentForm = document.getElementById("studentForm");
+
+studentForm.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect data from form fields
+    const studentId = document.getElementById("id").value;
+    const name = document.getElementById("name").value;
+    const school = document.getElementById("school").value || "No data available";
+    const college = document.getElementById("college").value || "No data available";
+    const hometown = document.getElementById("hometown").value || "No data available";
+    const facebook = document.getElementById("facebook").value || "";
+    const twitter = document.getElementById("twitter").value || "";
+    const linkedin = document.getElementById("linkedin").value || "";
+    const github = document.getElementById("github").value || "";
+
+    // Create an object to hold the updated student data
+    const updatedStudentData = {
+        id: studentId,
+        name: name,
+        school: school,
+        college: college,
+        hometown: hometown,
+        socialLinks: {
+            facebook: facebook,
+            twitter: twitter,
+            linkedin: linkedin,
+            github: github,
+        },
+    };
+
+    try {
+        // Send a POST request to the server to update the student data
+        const response = await fetch("/update-student", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedStudentData),
+        });
+
+        if (response.ok) {
+            // Update successful, you can redirect or show a success message
+            console.log("Student data updated successfully");
+            // Update successful, show a confirmation message
+            window.alert("Student data updated successfully");
+            // Redirect to the dashboard or perform other actions as needed
+            // window.location.href = "/dashboard";
+            window.location.href = "/dashboard";
+        } else {
+            // Update failed, handle errors here
+            console.error("Failed to update student data");
+        }
+    } catch (error) {
+        console.error("Error updating student data:", error);
+    }
+});

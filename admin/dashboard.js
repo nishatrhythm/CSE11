@@ -94,7 +94,7 @@ function viewStudent(studentId) {
     const studentNumber = studentId.substr(-2);
 
     // Redirect to form.html with the viewId query parameter
-    window.location.href = `/admin/form.html?viewId=${studentNumber}`;
+    window.location.href = `/form.html?viewId=${studentNumber}`;
 }
 
 // Function to edit a student's details
@@ -103,7 +103,7 @@ function editStudent(studentId) {
     const studentNumber = studentId.substr(-2);
 
     // Redirect to form.html with the editId query parameter for editing
-    window.location.href = `/admin/form.html?editId=${studentNumber}`;
+    window.location.href = `/form.html?editId=${studentNumber}`;
 }
 
 function deleteStudent(studentId) {
