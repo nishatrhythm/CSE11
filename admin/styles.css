@@ -176,20 +176,6 @@
     color: #ff5733; /* You can adjust the color code as needed */
 }
 
-/* Warning Text */
-.warning-text {
-    color: #ff5733; /* Warning-type color */
-    margin-top: -15px; /* Add some top margin for spacing */
-}
-
-/* "Learn more" Link */
-.warning-text a {
-    color: #ff5733; /* Warning-type color for the link */
-    text-decoration: underline; /* Add underline to the link */
-    margin-left: 5px; /* Add left margin for spacing */
-    font-weight: 600;
-}
-
 /* Add a media query for smaller screens to stack social links vertically */
 @media (max-width: 768px) {
     .social-links-table td {
@@ -237,6 +223,12 @@
 /* Center-align the thead elements in the table */
 #studentTable thead th {
     text-align: center;
+}
+
+/* In your styles.css or inside a <style> element in your HTML */
+.student-thumbnail {
+    max-width: 200px; /* Adjust this value as needed */
+    height: auto; /* Maintain aspect ratio */;
 }
 
 ::selection {

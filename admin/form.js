@@ -64,12 +64,14 @@ form.appendChild(collegeDiv);
 const hometownDiv = createFormInput("Hometown:", "text", "hometown", "hometown", false);
 form.appendChild(hometownDiv);
 
-// Student Image Label (with information icon)
+// Create a div to group the Student Image label and the tooltip
 const imageLabelDiv = document.createElement("div");
-imageLabelDiv.className = "form-group mb-3 d-flex align-items-center"; // Add a class for flex alignment
+imageLabelDiv.className = "form-group mb-2 d-flex align-items-center"; // Add a class for flex alignment
 
+// Student Image Label
 const imageLabel = document.createElement("label");
 imageLabel.textContent = "Student Image:";
+imageLabel.className = "mb-0"; // Remove margin-bottom for spacing
 imageLabelDiv.appendChild(imageLabel);
 
 // Create an information icon (i button)
@@ -80,7 +82,7 @@ infoIcon.style.cursor = "pointer"; // Add a pointer cursor to indicate interacti
 // Create a custom tooltip element
 const customTooltip = document.createElement("div");
 customTooltip.className = "custom-tooltip";
-customTooltip.textContent = "Local development prevents direct browser-based file uploads due to security restrictions.";
+customTooltip.textContent = "Student image should be 1170 x 750. Only .jpg and .jpeg files are allowed.";
 customTooltip.style.display = "none"; // Initially hide the tooltip
 
 // Append the tooltip element to the information icon
@@ -99,24 +101,19 @@ infoIcon.addEventListener("mouseout", function () {
 // Append the information icon to the imageLabelDiv
 imageLabelDiv.appendChild(infoIcon);
 
+// Append the imageLabelDiv to the form
 form.appendChild(imageLabelDiv);
 
-// Create a new paragraph element for the warning text
-const warningText = document.createElement("p");
-warningText.className = "warning-text";
-warningText.textContent = "Please add the image inside \"images\" folder.";
+// Create a new input element for the file selection field
+const fileInput = document.createElement("input");
+fileInput.type = "file";
+fileInput.id = "studentImage"; // Set an ID for the file input
+fileInput.name = "studentImage"; // Set a name for the file input
+fileInput.className = "form-control"; // Apply the form control class
+fileInput.accept = ".jpg, .jpeg"; // Allow only JPG/JPEG files
 
-// Create a "Learn more" link within the warning text
-const learnMoreLink = document.createElement("a");
-learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Replace with the actual link
-learnMoreLink.target = "_blank"; // Open link in a new tab
-learnMoreLink.textContent = "Learn more";
-
-// Append the "Learn more" link to the warning text
-warningText.appendChild(learnMoreLink);
-
-// Append the warning text to the form
-form.appendChild(warningText);
+// Append the file input to the form
+form.appendChild(fileInput);
 
 // Social Links
 const socialLinksDiv = document.createElement("div");
@@ -141,17 +138,61 @@ socialLinksTable.appendChild(githubRow);
 socialLinksDiv.appendChild(socialLinksTable);
 form.appendChild(socialLinksDiv);
 
-// Submit Button
-const submitButtonDiv = document.createElement("div");
-submitButtonDiv.className = "form-group";
+// Submit Buttons
+const addStudentButtonDiv = document.createElement("div");
+addStudentButtonDiv.className = "form-group";
 
-const submitButton = document.createElement("button");
-submitButton.type = "submit";
-submitButton.className = "btn btn-primary";
-submitButton.textContent = "Add Student";
+const addStudentButton = document.createElement("button");
+addStudentButton.type = "submit";
+addStudentButton.className = "btn btn-primary";
+addStudentButton.textContent = "Add Student";
 
-submitButtonDiv.appendChild(submitButton);
-form.appendChild(submitButtonDiv);
+addStudentButtonDiv.appendChild(addStudentButton);
+form.appendChild(addStudentButtonDiv);
+
+// Create a container div for the buttons
+const buttonsContainer = document.createElement("div");
+buttonsContainer.className = "text-center"; // Add the 'text-center' class to center-align content
+
+// "Update Student" button
+const updateStudentButtonDiv = document.createElement("div");
+updateStudentButtonDiv.className = "form-group";
+
+const updateStudentButton = document.createElement("button");
+updateStudentButton.type = "submit";
+updateStudentButton.className = "btn btn-primary";
+updateStudentButton.textContent = "Update Student";
+updateStudentButton.style.display = "none"; // Initially hidden
+
+updateStudentButtonDiv.appendChild(updateStudentButton);
+buttonsContainer.appendChild(updateStudentButtonDiv);
+
+// "Edit This Student" button
+const editStudentButtonDiv = document.createElement("div");
+editStudentButtonDiv.className = "form-group mt-5";
+
+const editStudentButton = document.createElement("button");
+editStudentButton.type = "button"; // Change the button type to "button"
+editStudentButton.className = "btn btn-primary";
+editStudentButton.textContent = "Edit This Student";
+editStudentButton.style.display = "none"; // Initially hidden
+
+editStudentButton.addEventListener("click", function () {
+    // Get the current viewId from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewId = urlParams.get("viewId");
+
+    // Redirect to the edit view with the editId query parameter
+    if (viewId) {
+        window.location.href = `/form.html?editId=${viewId}`;
+    }
+});
+
+editStudentButtonDiv.appendChild(editStudentButton);
+buttonsContainer.appendChild(editStudentButtonDiv);
+
+// Append the buttons container to the form
+form.appendChild(buttonsContainer);
 
 // Finally, append the form to the container in your HTML
 const container = document.querySelector(".container");
@@ -309,20 +350,10 @@ document.addEventListener('DOMContentLoaded', fetchAndDisplayEditStudent);
 const urlParams = new URLSearchParams(window.location.search);
 const viewId = urlParams.get("viewId");
 
-// Function to populate the form fields
 function populateFormFieldsView(student) {
     // Change the heading text to "View Student Information"
     const heading = document.getElementById("heading");
     headingText.textContent = "View Student Information";
-
-    // Update the warning text
-    warningText.textContent = "Please see the image inside the \"images\" folder.";
-
-    // Update the "Learn more" link
-    learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Update the link for viewing
-
-    // Append the "Learn more" link to the warning text
-    warningText.appendChild(learnMoreLink);
 
     const studentIdInput = document.getElementById("id");
     studentIdInput.value = student.id;
@@ -360,8 +391,29 @@ function populateFormFieldsView(student) {
     githubInput.value = student.socialLinks.github;
     githubInput.disabled = true;
 
-    // Hide the "Add Student" button
-    submitButton.style.display = "none";
+    // Hide the file input field
+    const fileInput = document.getElementById("studentImage");
+    fileInput.style.display = "none";
+
+    // Create a thumbnail of the student image
+    const thumbnail = document.createElement("img");
+    thumbnail.src = `/images/${student.id}.jpg`; // Assuming your image files are named based on student IDs
+    thumbnail.alt = "Student Image";
+    thumbnail.className = "student-thumbnail";
+
+    // Append the thumbnail to the form
+    form.insertBefore(thumbnail, socialLinksDiv);
+
+    // Hide the information icon and tooltip
+    const infoIcon = document.querySelector(".warning-icon");
+    if (infoIcon) {
+        infoIcon.style.display = "none";
+    }
+
+    // Show "Edit This Student" button and hide others
+    editStudentButton.style.display = "inline-block";
+    addStudentButton.style.display = "none";
+    updateStudentButton.style.display = "none";
 }
 
 // Check if viewId exists and fetch the corresponding student data
@@ -389,22 +441,14 @@ function populateFormFieldsEdit(student) {
     const heading = document.getElementById("heading");
     headingText.textContent = "Update Student Information";
 
-    // Update the warning text
-    warningText.textContent = "Please update the image inside the \"images\" folder.";
-
-    // Update the "Learn more" link
-    learnMoreLink.href = "https://github.com/nishatrhythm/CSE11"; // Update the link for viewing
-
-    // Append the "Learn more" link to the warning text
-    warningText.appendChild(learnMoreLink);
-
     const studentIdInput = document.getElementById("id");
     studentIdInput.value = student.id;
     studentIdInput.disabled = true;
 
-    // Update the button label to "Update Student"
-    const submitButton = document.querySelector(".btn.btn-primary");
-    submitButton.textContent = "Update Student";
+    // Show "Update Student" button and hide others
+    updateStudentButton.style.display = "inline-block";
+    addStudentButton.style.display = "none";
+    editStudentButton.style.display = "none";
 }
 
 // Check if editId exists and fetch the corresponding student data
@@ -424,10 +468,7 @@ if (editId) {
         });
 }
 
-// Add an event listener to the form for submission
-const studentForm = document.getElementById("studentForm");
-
-studentForm.addEventListener("submit", async function (event) {
+updateStudentButton.addEventListener("click", async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Collect data from form fields
@@ -467,9 +508,8 @@ studentForm.addEventListener("submit", async function (event) {
         });
 
         if (response.ok) {
-            // Update successful, you can redirect or show a success message
-            console.log("Student data updated successfully");
             // Update successful, show a confirmation message
+            console.log("Student data updated successfully");
             window.alert("Student data updated successfully");
             // Redirect to the dashboard or perform other actions as needed
             // window.location.href = "/dashboard";
