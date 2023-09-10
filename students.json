@@ -353,8 +353,8 @@
   {
     "id": "29",
     "name": "Fahim Hasan",
-    "school": "No data available",
-    "college": "No data available",
+    "school": "Singary Model High School",
+    "college": "Noapara Government College, Jashore",
     "hometown": "Paikpara, Abhaynagar, Jashore",
     "socialLinks": {
       "facebook": "",
@@ -642,6 +642,19 @@
     "school": "No data available",
     "college": "No data available",
     "hometown": "41, Dilu Road, New Eskaton, Ramna, Dhaka",
+    "socialLinks": {
+      "facebook": "",
+      "twitter": "",
+      "linkedin": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "56",
+    "name": "Test",
+    "school": "Test",
+    "college": "No data available",
+    "hometown": "No data available",
     "socialLinks": {
       "facebook": "",
       "twitter": "",

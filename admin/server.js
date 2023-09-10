@@ -39,6 +39,42 @@ const storage = multer.diskStorage({
 // Create a multer instance with the storage engine
 const upload = multer({ storage: storage });
 
+// Handle POST requests to add student image
+app.post('/add-student-image/:studentId', upload.single('studentImage'), (req, res) => {
+    // Image upload is handled by multer, and the uploaded image is saved in the "images" directory
+    res.status(200).json({ message: 'Student image added successfully' });
+});
+
+// Handle POST requests to add a new student
+app.post('/add-student', async (req, res) => {
+    try {
+        const newStudentData = req.body;
+        const filePath = path.join(__dirname, '..', 'students.json');
+
+        // Read the existing students data from 'students.json'
+        const data = fs.readFileSync(filePath, 'utf8');
+        const studentsData = JSON.parse(data);
+
+        // Check if the student ID already exists
+        const idExists = studentsData.some((student) => student.id === newStudentData.id);
+
+        if (idExists) {
+            return res.status(400).json({ error: 'Student ID already exists' });
+        }
+
+        // Add the new student to the data
+        studentsData.push(newStudentData);
+
+        // Write the updated data back to 'students.json'
+        fs.writeFileSync(filePath, JSON.stringify(studentsData, null, 2));
+
+        res.status(201).json({ message: 'Student added successfully' });
+    } catch (error) {
+        console.error('Error adding student:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 // Handle POST requests to update student image
 app.post('/update-student-image/:studentId', upload.single('studentImage'), (req, res) => {
     // Image upload is handled by multer, and the uploaded image is saved in the "images" directory
