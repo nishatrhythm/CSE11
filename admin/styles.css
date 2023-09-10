@@ -294,6 +294,7 @@
 .modal-body {
     text-align: center;
     font-size: 16px;
+    /* font-weight: 500; */
     margin-bottom: 20px;
 }
 
@@ -310,6 +311,7 @@
     background-color: #007BFF;
     color: #fff;
     border: none;
+    font-weight: 500;
     border-radius: 25px;
     padding: 10px 20px;
     cursor: pointer;

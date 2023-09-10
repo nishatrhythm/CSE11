@@ -596,13 +596,15 @@ updateStudentButton.addEventListener("click", async function (event) {
 
     // Check if the selected file is in the JPG/JPEG format
     if (imageFile.type !== "image/jpeg" && imageFile.type !== "image/jpg") {
-        window.alert("Please select a valid JPG/JPEG image file.");
+        // Display a modal alert
+        showModal("Please select a valid JPG/JPEG image file.", 'error');
         return; // Prevent further form submission
     }
 
     // Check if the selected file size is within the limit of 2 MB
     if (imageFile.size > 2 * 1024 * 1024) {
-        window.alert("Image size should be less than or equal to 2 MB.");
+        // Display a modal alert
+        showModal("Image size must be less than or equal to 2 MB.", 'error');
         return; // Prevent further form submission
     }
 
@@ -656,7 +658,8 @@ updateStudentButton.addEventListener("click", async function (event) {
         if (response.ok) {
             // Update successful, show a confirmation message
             console.log("Student data updated successfully");
-            window.alert("Student data updated successfully");
+            // Display a modal alert
+            showModal("Student data updated successfully.", 'success');
             // Redirect to the dashboard or perform other actions as needed
             window.location.href = "/dashboard";
         } else {
@@ -709,11 +712,20 @@ addStudentButton.addEventListener("click", async function (event) {
         studentIdInput.placeholder = 'This field is required';
         studentIdInput.style.color = 'red';
 
-        // Scroll to the student ID input field
-        scrollToElement(studentIdInput);
+        // Display a modal alert
+        showModal("Please enter a valid student ID.", 'error');
 
-        // Display an alert
-        window.alert("Please enter a valid student ID.");
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(studentIdInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                studentIdInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
 
         // Add an input event listener to remove the red border and placeholder text when the user starts typing again
         studentIdInput.addEventListener('input', function () {
@@ -722,11 +734,6 @@ addStudentButton.addEventListener("click", async function (event) {
             studentIdInput.placeholder = ''; // Remove the placeholder text
             studentIdInput.focus(); // Focus on the input field to make the cursor blink
         });
-
-        // Explicitly focus on the input field after a brief delay to ensure scrolling completes
-        setTimeout(() => {
-            studentIdInput.focus();
-        }, 300); // Adjust the delay as needed
 
         return; // Prevent further form submission
     }
@@ -834,13 +841,15 @@ addStudentButton.addEventListener("click", async function (event) {
 
     // Check if the selected file is in the JPG/JPEG format
     if (imageFile.type !== "image/jpeg" && imageFile.type !== "image/jpg") {
-        window.alert("Please select a valid JPG/JPEG image file.");
+        // Display a modal alert
+        showModal("Please select a valid JPG/JPEG image file.", 'error');
         return; // Prevent further form submission
     }
 
     // Check if the selected file size is within the limit of 2 MB
     if (imageFile.size > 2 * 1024 * 1024) {
-        window.alert("Image size should be less than or equal to 2 MB.");
+        // Display a modal alert
+        showModal("Image size must be less than or equal to 2 MB.", 'error');
         return; // Prevent further form submission
     }
 
@@ -894,7 +903,8 @@ addStudentButton.addEventListener("click", async function (event) {
         if (response.ok) {
             // Update successful, show a confirmation message
             console.log("Student data added successfully");
-            window.alert("Student data added successfully");
+            // Display a modal alert
+            showModal("Student data added successfully.", 'success');
             // Redirect to the dashboard or perform other actions as needed
             window.location.href = "/dashboard";
         } else {
