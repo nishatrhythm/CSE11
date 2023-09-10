@@ -82,7 +82,7 @@ infoIcon.style.cursor = "pointer"; // Add a pointer cursor to indicate interacti
 // Create a custom tooltip element
 const customTooltip = document.createElement("div");
 customTooltip.className = "custom-tooltip";
-customTooltip.textContent = "Student image should be 1170 x 750. Only .jpg and .jpeg files are allowed.";
+customTooltip.textContent = "Student image should be 1170 x 750. Only .jpg and .jpeg files are allowed. Maximum file size is 2 MB.";
 customTooltip.style.display = "none"; // Initially hide the tooltip
 
 // Append the tooltip element to the information icon
@@ -111,6 +111,7 @@ fileInput.id = "studentImage"; // Set an ID for the file input
 fileInput.name = "studentImage"; // Set a name for the file input
 fileInput.className = "form-control"; // Apply the form control class
 fileInput.accept = ".jpg, .jpeg"; // Allow only JPG/JPEG files
+fileInput.required = true; // Make the file input required
 
 // Append the file input to the form
 form.appendChild(fileInput);
@@ -477,10 +478,72 @@ updateStudentButton.addEventListener("click", async function (event) {
     const school = document.getElementById("school").value || "No data available";
     const college = document.getElementById("college").value || "No data available";
     const hometown = document.getElementById("hometown").value || "No data available";
+    const imageFile = document.getElementById("studentImage").files[0]; // Get the selected image file
     const facebook = document.getElementById("facebook").value || "";
     const twitter = document.getElementById("twitter").value || "";
     const linkedin = document.getElementById("linkedin").value || "";
     const github = document.getElementById("github").value || "";
+
+    // Check if an image file is selected and required
+    if (!imageFile) {
+        const imageInput = document.getElementById('studentImage');
+
+        // Add an event listener to reset the border color and hide the error message on file input change
+        imageInput.addEventListener('change', function () {
+            // Reset the border color
+            imageInput.style.border = '';
+
+            // Hide the error message
+            imageError.style.display = 'none';
+        });
+
+        scrollToElement(imageInput);
+
+        // Focus on the input field
+        imageInput.focus();
+
+        // Optionally, change the border color
+        imageInput.style.border = '3px solid red';
+
+        // Display the error message
+        imageError.style.display = 'block';
+
+        return; // Prevent further form submission
+    }
+
+    // Check if the selected file is in the JPG/JPEG format
+    if (imageFile.type !== "image/jpeg" && imageFile.type !== "image/jpg") {
+        window.alert("Please select a valid JPG/JPEG image file.");
+        return; // Prevent further form submission
+    }
+
+    // Check if the selected file size is within the limit of 2 MB
+    if (imageFile.size > 2 * 1024 * 1024) {
+        window.alert("Image size should be less than or equal to 2 MB.");
+        return; // Prevent further form submission
+    }
+
+    // Construct a FormData object to send the image file
+    const formData = new FormData();
+    formData.append("studentImage", imageFile);
+
+    try {
+        // Send a POST request to the server to update the student image
+        const imageResponse = await fetch(`/update-student-image/${studentId}`, {
+            method: "POST",
+            body: formData,
+        });
+
+        if (imageResponse.ok) {
+            // Image update successful
+            console.log("Student image updated successfully");
+        } else {
+            // Image update failed
+            console.error("Failed to update student image");
+        }
+    } catch (imageError) {
+        console.error("Error updating student image:", imageError);
+    }
 
     // Create an object to hold the updated student data
     const updatedStudentData = {
@@ -512,7 +575,6 @@ updateStudentButton.addEventListener("click", async function (event) {
             console.log("Student data updated successfully");
             window.alert("Student data updated successfully");
             // Redirect to the dashboard or perform other actions as needed
-            // window.location.href = "/dashboard";
             window.location.href = "/dashboard";
         } else {
             // Update failed, handle errors here
@@ -522,3 +584,14 @@ updateStudentButton.addEventListener("click", async function (event) {
         console.error("Error updating student data:", error);
     }
 });
+
+function scrollToElement(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const targetY = rect.top - (windowHeight - rect.height) / 2 + window.scrollY;
+
+    window.scrollTo({
+        top: targetY,
+        behavior: 'smooth', // Use 'auto' or 'smooth' for scrolling behavior
+    });
+}

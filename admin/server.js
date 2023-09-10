@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const multer = require('multer'); // Import multer
 const app = express();
 const port = 3000;
 
@@ -22,6 +23,26 @@ app.get('/dashboard', (req, res) => {
 // Serve students.json from the CSE11 directory
 app.get('/students.json', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'students.json'));
+});
+
+// Create a storage engine for multer to specify where to save the uploaded image
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, 'images')); // Save images in the "images" directory
+    },
+    filename: (req, file, cb) => {
+        const studentId = req.params.studentId; // Get studentId from the URL parameter
+        cb(null, studentId + '.jpg'); // Use studentId as the image filename
+    },
+});
+
+// Create a multer instance with the storage engine
+const upload = multer({ storage: storage });
+
+// Handle POST requests to update student image
+app.post('/update-student-image/:studentId', upload.single('studentImage'), (req, res) => {
+    // Image upload is handled by multer, and the uploaded image is saved in the "images" directory
+    res.status(200).json({ message: 'Student image updated successfully' });
 });
 
 // Handle POST requests to update student data
