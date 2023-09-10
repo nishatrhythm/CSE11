@@ -664,7 +664,13 @@ addStudentButton.addEventListener("click", async function (event) {
             studentIdInput.style.border = ''; // Remove the red border
             studentIdInput.style.color = ''; // Reset the text color
             studentIdInput.placeholder = ''; // Remove the placeholder text
+            studentIdInput.focus(); // Focus on the input field to make the cursor blink
         });
+
+        // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+        setTimeout(() => {
+            studentIdInput.focus();
+        }, 300); // Adjust the delay as needed
 
         return; // Prevent further form submission
     }
@@ -686,9 +692,15 @@ addStudentButton.addEventListener("click", async function (event) {
         // Add an input event listener to remove the red border and focus on input when the user starts typing again
         studentIdInput.addEventListener('input', function () {
             studentIdInput.style.border = ''; // Remove the red border
-            studentIdErrorMessage.style.display = 'none'; // Hide the error message
+            studentIdInput.style.color = ''; // Reset the text color
+            studentIdInput.placeholder = ''; // Remove the placeholder text
             studentIdInput.focus(); // Focus on the input field to make the cursor blink
         });
+
+        // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+        setTimeout(() => {
+            studentIdInput.focus();
+        }, 300); // Adjust the delay as needed
 
         return; // Prevent further form submission
     }
