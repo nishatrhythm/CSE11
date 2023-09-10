@@ -469,6 +469,62 @@ if (editId) {
         });
 }
 
+// Function to display the custom modal with a message and an icon
+function showModal(message, alertType) {
+    const modal = document.getElementById('customModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalMessage = document.getElementById('modalMessage');
+    const body = document.querySelector('body');
+
+    // Set the modal content based on the alert type
+    switch (alertType) {
+        case 'success':
+            modalIcon.className = 'fa fa-check-circle';
+            modalIcon.style.color = 'green';
+            break;
+        case 'error':
+            modalIcon.className = 'fa fa-triangle-exclamation';
+            modalIcon.style.color = 'orange';
+            // modalMessage.classList.add('error-message');
+            break;
+        default:
+            modalIcon.className = 'fa fa-info-circle';
+            modalIcon.style.color = 'blue';
+    }
+
+    modalMessage.textContent = message;
+
+    // Display the modal in the vertical center of the screen
+    modal.style.display = 'flex';
+
+    // Add the class to the body element to prevent scrolling
+    body.classList.add('modal-open');
+
+    // Disable right-clicking while the modal is open
+    document.addEventListener('contextmenu', preventContextMenu);
+
+    // Handle the "Okay" button click to close the modal and re-enable scrolling
+    const modalOkayBtn = document.getElementById('modalOkayBtn');
+    modalOkayBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+
+        // Remove the 'modal-open' class to re-enable scrolling
+        document.body.classList.remove('modal-open');
+
+        // Remove the contextmenu event listener
+        document.removeEventListener('contextmenu', preventContextMenu);
+    });
+}
+
+// Function to prevent the context menu (right-click) while the modal is open
+function preventContextMenu(event) {
+    event.preventDefault();
+}
+
+// Example usage:
+// showModal('This is a success message.', 'success');
+// showModal('This is an error message.', 'error');
+
 updateStudentButton.addEventListener("click", async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -683,11 +739,20 @@ addStudentButton.addEventListener("click", async function (event) {
         const studentIdInput = document.getElementById('id');
         studentIdInput.style.border = '3px solid red';
 
-        // Scroll to the student ID input field
-        scrollToElement(studentIdInput);
+        // Display a modal alert
+        showModal("The student ID already exists! Please either input data for a different ID or remove this student ID's data from the dashboard.", 'error');
 
-        // Display an alert
-        window.alert("The student ID already exists! Please either input data for a different ID or remove this student ID's data from the dashboard.");
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(studentIdInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                studentIdInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
 
         // Add an input event listener to remove the red border and focus on input when the user starts typing again
         studentIdInput.addEventListener('input', function () {
@@ -697,10 +762,7 @@ addStudentButton.addEventListener("click", async function (event) {
             studentIdInput.focus(); // Focus on the input field to make the cursor blink
         });
 
-        // Explicitly focus on the input field after a brief delay to ensure scrolling completes
-        setTimeout(() => {
-            studentIdInput.focus();
-        }, 300); // Adjust the delay as needed
+
 
         return; // Prevent further form submission
     }

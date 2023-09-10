@@ -11,7 +11,8 @@
 /* Navbar styles with animated gradient background */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Align content to left and right */
+    justify-content: space-between;
+    /* Align content to left and right */
     position: sticky;
     top: 0;
     width: 100%;
@@ -44,17 +45,23 @@
 .nav-button {
     font-size: 16px;
     text-decoration: none;
-    color: black; /* Text color is black */
-    padding: 10px 20px; /* Add padding to make it look like a button */
+    color: black;
+    /* Text color is black */
+    padding: 10px 20px;
+    /* Add padding to make it look like a button */
     border: none;
     border-radius: 5px;
-    background-color: white; /* Button background is white */
-    transition: background-color 0.3s ease; /* Add a transition effect for hover */
+    background-color: white;
+    /* Button background is white */
+    transition: background-color 0.3s ease;
+    /* Add a transition effect for hover */
 }
 
 .nav-button:hover {
-    background-color: #f0f0f0; /* Slightly darker background on hover */
-    color: black; /* Text color is black on hover */
+    background-color: #f0f0f0;
+    /* Slightly darker background on hover */
+    color: black;
+    /* Text color is black on hover */
 }
 
 /* Animation for the navbar background gradient */
@@ -76,16 +83,22 @@
 
 /* Add this CSS to add some margin between the buttons in the "Actions" column */
 #studentTable tbody tr td:nth-child(3) .btn {
-    margin-right: 10px; /* Adjust the margin as needed to control the spacing between buttons */
-    width: 65px; /* Set a specific width for the buttons */
+    margin-right: 10px;
+    /* Adjust the margin as needed to control the spacing between buttons */
+    width: 65px;
+    /* Set a specific width for the buttons */
 }
 
 /* Add this to your styles.css file or within a <style> tag in the HTML document */
 .polite-background {
-    background-color: #f8f9fa; /* Use your preferred background color */
-    padding: 40px; /* Adjust padding as needed */
-    border-radius: 10px; /* Add a subtle border-radius */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    background-color: #f8f9fa;
+    /* Use your preferred background color */
+    padding: 40px;
+    /* Adjust padding as needed */
+    border-radius: 10px;
+    /* Add a subtle border-radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add a subtle box shadow */
     margin-right: 25%;
     margin-left: 25%;
 }
@@ -132,32 +145,40 @@
 }
 
 .social-links-table td {
-    width: 48%; /* Adjust the width as needed */
+    width: 48%;
+    /* Adjust the width as needed */
 }
 
 /* Add this CSS to style the social links table labels */
 .social-links-table label {
     font-weight: bold;
-    margin-bottom: 5px; /* Adjust the margin as needed to reduce spacing */
+    margin-bottom: 5px;
+    /* Adjust the margin as needed to reduce spacing */
     display: block;
 }
 
 /* Custom Tooltip */
 .custom-tooltip {
     position: absolute;
-    background-color: #ff5733; /* Warning-type background color */
-    color: #fff; /* Text color */
+    background-color: orange;
+    /* Warning-type background color */
+    color: #fff;
+    /* Text color */
     border-radius: 4px;
     padding: 6px 10px;
     font-size: 14px;
     font-weight: 400;
     z-index: 1000;
     pointer-events: none;
-    white-space: normal; /* Allow multiple lines of text */
+    white-space: normal;
+    /* Allow multiple lines of text */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    max-width: 400px; /* Adjust the maximum width as needed */
-    word-wrap: break-word; /* Allow long words to wrap */
-    line-height: 1.5; /* Add line-height for the gap between lines */
+    max-width: 400px;
+    /* Adjust the maximum width as needed */
+    word-wrap: break-word;
+    /* Allow long words to wrap */
+    line-height: 1.5;
+    /* Add line-height for the gap between lines */
     /* text-align: justify; */
 }
 
@@ -173,21 +194,25 @@
 
 /* Add a warning color to the i icon */
 .warning-icon {
-    color: #ff5733; /* You can adjust the color code as needed */
+    color: orange;
+    /* You can adjust the color code as needed */
 }
 
 /* Add a media query for smaller screens to stack social links vertically */
 @media (max-width: 768px) {
     .social-links-table td {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
+        /* Full width on smaller screens */
     }
 }
 
 /* Add padding to the right of the Student Image label */
 .form-group.mb-3 label[for="image"] {
-    margin-top: 20px; /* Adjust the margin-top value as needed */
+    margin-top: 20px;
+    /* Adjust the margin-top value as needed */
     margin-bottom: 20px;
-    padding-right: 10px; /* Add padding to the right of the label */
+    padding-right: 10px;
+    /* Add padding to the right of the label */
 }
 
 /* Move the "Choose file" button to a new line */
@@ -197,7 +222,8 @@
 
 /* Add padding to the Add Student button and center align it */
 .form-group button[type="submit"] {
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding: 10px 20px;
+    /* Adjust padding as needed */
     display: block;
     margin: 0 auto; /* Center align the button horizontally */
     margin-top: 50px;
@@ -213,11 +239,13 @@
 }
 
 .container {
-    margin-bottom: 20px; /* Add spacing after the form */
+    margin-bottom: 20px;
+    /* Add spacing after the form */
 }
 
 .table-responsive {
-    background-color: #f8f9fa; /* Your preferred background color */
+    background-color: #f8f9fa;
+    /* Your preferred background color */
 }
 
 /* Center-align the thead elements in the table */
@@ -228,7 +256,78 @@
 /* In your styles.css or inside a <style> element in your HTML */
 .student-thumbnail {
     max-width: 200px; /* Adjust this value as needed */
-    height: auto; /* Maintain aspect ratio */;
+    height: auto; /* Maintain aspect ratio */
+    ;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 450px;
+}
+
+.modal-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+#modalIcon {
+    font-size: 72px;
+    margin-bottom: 10px;
+}
+
+#modalOkayBtn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 120px;
+    letter-spacing: 3px;
+}
+
+#modalOkayBtn:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: orange; /* Set the text color to orange for error messages */
+}
+
+/* CSS to disable body scrolling when the modal is open */
+body.modal-open {
+    overflow: hidden;
 }
 
 ::selection {
@@ -236,29 +335,43 @@
     color: white; /* Text color within the selection */
 }
 
-input, textarea {
+input,
+textarea {
     caret-color: black;
 }
 
 /* Stylish text selection */
 ::selection {
-    background-color: #3498db; /* Highlight color */
-    color: #ffffff; /* Text color within the selection */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    background-color: #3498db;
+    /* Highlight color */
+    color: #ffffff;
+    /* Text color within the selection */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
 }
 
 /* Smooth cursor animation */
-input, textarea {
-    caret-color: #e74c3c; /* Cursor color */
-    transition: caret-color 0.3s ease; /* Smooth transition */
-    border: 2px solid #ecf0f1; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Spacing around input */
+input,
+textarea {
+    caret-color: #e74c3c;
+    /* Cursor color */
+    transition: caret-color 0.3s ease;
+    /* Smooth transition */
+    border: 2px solid #ecf0f1;
+    /* Border color */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 10px;
+    /* Spacing around input */
 }
 
 /* Hover effect for input and textarea */
-input:hover, textarea:hover {
-    border-color: #3498db; /* Border color on hover */
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Box shadow on hover */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+input:hover,
+textarea:hover {
+    border-color: #3498db;
+    /* Border color on hover */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    /* Box shadow on hover */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition */
 }
