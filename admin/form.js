@@ -484,6 +484,33 @@ updateStudentButton.addEventListener("click", async function (event) {
     const linkedin = document.getElementById("linkedin").value || "";
     const github = document.getElementById("github").value || "";
 
+    // Check if the student name is required
+    const studentNameInput = document.getElementById('name');
+
+    if (!studentNameInput.value) {
+        // Add an event listener to reset the border color and remove the red placeholder text on name input change
+        studentNameInput.addEventListener('input', function () {
+            // Reset the border color
+            studentNameInput.style.border = '';
+
+            // Remove the red placeholder text
+            studentNameInput.style.color = ''; // Reset the text color
+            studentNameInput.placeholder = 'This field is required';
+        });
+
+        // Set the placeholder text to indicate that the field is required and make it red
+        studentNameInput.style.color = 'red';
+        studentNameInput.placeholder = 'This field is required';
+
+        // Focus on the input field
+        studentNameInput.focus();
+
+        // Optionally, change the border color
+        studentNameInput.style.border = '3px solid red';
+
+        return; // Prevent further form submission
+    }
+
     // Check if an image file is selected and required
     if (!imageFile) {
         const imageInput = document.getElementById('studentImage');
