@@ -643,11 +643,53 @@ addStudentButton.addEventListener("click", async function (event) {
     // Collect data from form fields
     const studentId = document.getElementById("id").value;
 
+    // Check if the student ID is empty or contains only the common part
+    if (!studentId || studentId.trim() === "B1903050") {
+        // Set the student ID input field in red
+        const studentIdInput = document.getElementById('id');
+        studentIdInput.style.border = '3px solid red';
+
+        // Set the placeholder text to indicate that the field is required and make it red
+        studentIdInput.placeholder = 'This field is required';
+        studentIdInput.style.color = 'red';
+
+        // Scroll to the student ID input field
+        scrollToElement(studentIdInput);
+
+        // Display an alert
+        window.alert("Please enter a valid student ID.");
+
+        // Add an input event listener to remove the red border and placeholder text when the user starts typing again
+        studentIdInput.addEventListener('input', function () {
+            studentIdInput.style.border = ''; // Remove the red border
+            studentIdInput.style.color = ''; // Reset the text color
+            studentIdInput.placeholder = ''; // Remove the placeholder text
+        });
+
+        return; // Prevent further form submission
+    }
+
     // Check if the student ID already exists
     const idExists = await isStudentIdExists(studentId);
 
     if (idExists) {
+        // Set the student ID input field in red
+        const studentIdInput = document.getElementById('id');
+        studentIdInput.style.border = '3px solid red';
+
+        // Scroll to the student ID input field
+        scrollToElement(studentIdInput);
+
+        // Display an alert
         window.alert("The student ID already exists! Please either input data for a different ID or remove this student ID's data from the dashboard.");
+
+        // Add an input event listener to remove the red border and focus on input when the user starts typing again
+        studentIdInput.addEventListener('input', function () {
+            studentIdInput.style.border = ''; // Remove the red border
+            studentIdErrorMessage.style.display = 'none'; // Hide the error message
+            studentIdInput.focus(); // Focus on the input field to make the cursor blink
+        });
+
         return; // Prevent further form submission
     }
 
