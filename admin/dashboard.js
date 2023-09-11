@@ -191,12 +191,13 @@ function deleteStudent(studentId) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.message === 'Student deleted successfully') {
-                    // Reload the page to reflect the updated student list
-                    location.reload();
+
                 } else {
                     console.error('Error deleting student:', data.error);
                     // Handle the error accordingly
                 }
+                // Reload the page to reflect the updated student list
+                location.reload();
             })
             .catch((error) => {
                 console.error('Error deleting student:', error);
