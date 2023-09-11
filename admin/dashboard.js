@@ -99,17 +99,13 @@ function showModal(message, alertType) {
 
     // Set the modal content based on the alert type
     switch (alertType) {
-        case 'success':
-            modalIcon.className = 'fa fa-check-circle';
-            modalIcon.style.color = 'green';
-            break;
-        case 'error':
-            modalIcon.className = 'fa fa-triangle-exclamation';
-            modalIcon.style.color = 'orange';
-            break;
-        default:
+        case 'delete':
             modalIcon.className = 'fa-solid fa-trash';
             modalIcon.style.color = 'red';
+            break;
+        default:
+            modalIcon.className = 'fa fa-info-circle';
+            modalIcon.style.color = 'blue';
     }
 
     modalMessage.textContent = message;
@@ -147,6 +143,11 @@ function showModal(message, alertType) {
         // Remove the contextmenu event listener
         document.removeEventListener('contextmenu', preventContextMenu);
     });
+}
+
+// Function to prevent the context menu (right-click) while the modal is open
+function preventContextMenu(event) {
+    event.preventDefault();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
