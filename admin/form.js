@@ -474,6 +474,7 @@ function showModal(message, alertType) {
     const modal = document.getElementById('customModal');
     const modalIcon = document.getElementById('modalIcon');
     const modalMessage = document.getElementById('modalMessage');
+    const modalOkayBtn = document.getElementById('modalOkayBtn');
     const body = document.querySelector('body');
 
     // Set the modal content based on the alert type
@@ -496,6 +497,7 @@ function showModal(message, alertType) {
 
     // Display the modal in the vertical center of the screen
     modal.style.display = 'flex';
+    modal.classList.add('show'); // Add the 'show' class for the animation
 
     // Add the class to the body element to prevent scrolling
     body.classList.add('modal-open');
@@ -503,17 +505,22 @@ function showModal(message, alertType) {
     // Disable right-clicking while the modal is open
     document.addEventListener('contextmenu', preventContextMenu);
 
-    // Handle the "Okay" button click to close the modal and re-enable scrolling
-    const modalOkayBtn = document.getElementById('modalOkayBtn');
+    // Handle the "Cancel" button click to close the modal and re-enable scrolling
     modalOkayBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-
-        // Remove the 'modal-open' class to re-enable scrolling
-        document.body.classList.remove('modal-open');
-
-        // Remove the contextmenu event listener
-        document.removeEventListener('contextmenu', preventContextMenu);
+        closeModal();
     });
+
+    // Function to close the modal and remove animations
+    function closeModal() {
+        modal.classList.remove('show'); // Remove the 'show' class to trigger the fade-out animation
+        setTimeout(() => {
+            modal.style.display = 'none'; // Hide the modal after the animation completes
+            // Remove the 'modal-open' class to re-enable scrolling
+            body.classList.remove('modal-open');
+            // Remove the contextmenu event listener
+            document.removeEventListener('contextmenu', preventContextMenu);
+        }, 300); // Adjust the timeout to match the animation duration
+    }
 }
 
 // Function to prevent the context menu (right-click) while the modal is open

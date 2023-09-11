@@ -93,8 +93,8 @@ function showModal(message, alertType) {
     const modal = document.getElementById('customModal');
     const modalIcon = document.getElementById('modalIcon');
     const modalMessage = document.getElementById('modalMessage');
-    const modalCancelBtn = document.getElementById('modalCancelBtn'); // New Cancel button
-    const modalConfirmBtn = document.getElementById('modalConfirmBtn'); // New Confirm button
+    const modalCancelBtn = document.getElementById('modalCancelBtn');
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn');
     const body = document.querySelector('body');
 
     // Set the modal content based on the alert type
@@ -110,8 +110,9 @@ function showModal(message, alertType) {
 
     modalMessage.textContent = message;
 
-    // Display the modal in the vertical center of the screen
+    // Display the modal and apply the fade-in animation
     modal.style.display = 'flex';
+    modal.classList.add('show'); // Add the 'show' class for the animation
 
     // Add the class to the body element to prevent scrolling
     body.classList.add('modal-open');
@@ -121,13 +122,7 @@ function showModal(message, alertType) {
 
     // Handle the "Cancel" button click to close the modal and re-enable scrolling
     modalCancelBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-
-        // Remove the 'modal-open' class to re-enable scrolling
-        document.body.classList.remove('modal-open');
-
-        // Remove the contextmenu event listener
-        document.removeEventListener('contextmenu', preventContextMenu);
+        closeModal();
     });
 
     // Handle the "Confirm" button click (you can add your custom logic here)
@@ -135,14 +130,20 @@ function showModal(message, alertType) {
         // Add your logic for the Confirm button here
         // For example, perform an action or submit a form
         // Then close the modal as needed
-        modal.style.display = 'none';
-
-        // Remove the 'modal-open' class to re-enable scrolling
-        document.body.classList.remove('modal-open');
-
-        // Remove the contextmenu event listener
-        document.removeEventListener('contextmenu', preventContextMenu);
+        closeModal();
     });
+
+    // Function to close the modal and remove animations
+    function closeModal() {
+        modal.classList.remove('show'); // Remove the 'show' class to trigger the fade-out animation
+        setTimeout(() => {
+            modal.style.display = 'none'; // Hide the modal after the animation completes
+            // Remove the 'modal-open' class to re-enable scrolling
+            body.classList.remove('modal-open');
+            // Remove the contextmenu event listener
+            document.removeEventListener('contextmenu', preventContextMenu);
+        }, 300); // Adjust the timeout to match the animation duration
+    }
 }
 
 // Function to prevent the context menu (right-click) while the modal is open
@@ -178,7 +179,7 @@ function deleteStudent(studentId) {
     const studentNumber = studentId.substr(-2);
 
     // Show a confirmation modal
-    showModal('Are you sure you want to delete this student?', 'delete');
+    showModal("Are you sure you want to delete this student? This action can't be undone.", 'delete');
 
     // Handle the "Confirm" button click to delete the student
     const modalConfirmBtn = document.getElementById('modalConfirmBtn');
