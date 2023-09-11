@@ -596,15 +596,67 @@ updateStudentButton.addEventListener("click", async function (event) {
 
     // Check if the selected file is in the JPG/JPEG format
     if (imageFile.type !== "image/jpeg" && imageFile.type !== "image/jpg") {
+        const imageInput = document.getElementById('studentImage');
+        imageInput.style.border = '3px solid red';
+
         // Display a modal alert
         showModal("Please select a valid JPG/JPEG image file.", 'error');
+
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(imageInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                // Focus on the input field
+                imageInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
+
+        // Add an event listener to reset the border color and hide the error message on file input change
+        imageInput.addEventListener('change', function () {
+            // Reset the border color
+            imageInput.style.border = '';
+
+            // Hide the error message
+            imageError.style.display = 'none';
+        });
+
         return; // Prevent further form submission
     }
 
     // Check if the selected file size is within the limit of 2 MB
     if (imageFile.size > 2 * 1024 * 1024) {
+        const imageInput = document.getElementById('studentImage');
+        imageInput.style.border = '3px solid red';
+
         // Display a modal alert
         showModal("Image size must be less than or equal to 2 MB.", 'error');
+
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(imageInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                // Focus on the input field
+                imageInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
+
+        // Add an event listener to reset the border color and hide the error message on file input change
+        imageInput.addEventListener('change', function () {
+            // Reset the border color
+            imageInput.style.border = '';
+
+            // Hide the error message
+            imageError.style.display = 'none';
+        });
+
         return; // Prevent further form submission
     }
 
@@ -769,8 +821,6 @@ addStudentButton.addEventListener("click", async function (event) {
             studentIdInput.focus(); // Focus on the input field to make the cursor blink
         });
 
-
-
         return; // Prevent further form submission
     }
 
@@ -841,15 +891,67 @@ addStudentButton.addEventListener("click", async function (event) {
 
     // Check if the selected file is in the JPG/JPEG format
     if (imageFile.type !== "image/jpeg" && imageFile.type !== "image/jpg") {
+        const imageInput = document.getElementById('studentImage');
+        imageInput.style.border = '3px solid red';
+
         // Display a modal alert
         showModal("Please select a valid JPG/JPEG image file.", 'error');
+
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(imageInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                // Focus on the input field
+                imageInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
+
+        // Add an event listener to reset the border color and hide the error message on file input change
+        imageInput.addEventListener('change', function () {
+            // Reset the border color
+            imageInput.style.border = '';
+
+            // Hide the error message
+            imageError.style.display = 'none';
+        });
+        
         return; // Prevent further form submission
     }
 
     // Check if the selected file size is within the limit of 2 MB
     if (imageFile.size > 2 * 1024 * 1024) {
+        const imageInput = document.getElementById('studentImage');
+        imageInput.style.border = '3px solid red';
+
         // Display a modal alert
         showModal("Image size must be less than or equal to 2 MB.", 'error');
+
+        // Add an event listener to the modal "Okay" button to scroll to the input field
+        const modalOkayBtn = document.getElementById('modalOkayBtn');
+        modalOkayBtn.addEventListener('click', () => {
+            // Scroll to the student ID input field when the modal "Okay" button is clicked
+            scrollToElement(imageInput);
+
+            // Explicitly focus on the input field after a brief delay to ensure scrolling completes
+            setTimeout(() => {
+                // Focus on the input field
+                imageInput.focus();
+            });
+        }, 300); // Adjust the delay as needed
+
+        // Add an event listener to reset the border color and hide the error message on file input change
+        imageInput.addEventListener('change', function () {
+            // Reset the border color
+            imageInput.style.border = '';
+
+            // Hide the error message
+            imageError.style.display = 'none';
+        });
+
         return; // Prevent further form submission
     }
 
