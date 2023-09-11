@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const multer = require('multer'); // Import multer
+const multer = require('multer');
 const app = express();
 const port = 3000;
 
@@ -115,6 +115,53 @@ app.post('/update-student', (req, res) => {
                 console.log('Student data updated successfully.');
                 res.status(200).json({ message: 'Student data updated successfully' });
             }
+        });
+    });
+});
+
+// Handle DELETE requests to delete a student and their image
+app.delete('/delete-student/:studentId', (req, res) => {
+    const studentId = req.params.studentId;
+
+    // Delete the student from 'students.json'
+    const filePath = path.join(__dirname, '..', 'students.json');
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading student data:', err);
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        const studentsData = JSON.parse(data);
+
+        // Find the index of the student with the given ID
+        const studentIndex = studentsData.findIndex((student) => student.id === studentId);
+
+        if (studentIndex === -1) {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+
+        // Remove the student from the array
+        studentsData.splice(studentIndex, 1);
+
+        // Write the updated data back to 'students.json'
+        fs.writeFile(filePath, JSON.stringify(studentsData, null, 2), (err) => {
+            if (err) {
+                console.error('Error deleting student data:', err);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+
+            // Delete the student's image (assuming the filename is based on the student ID)
+            const imagePath = path.join(__dirname, 'images', `${studentId}.jpg`);
+            
+            fs.unlink(imagePath, (err) => {
+                if (err) {
+                    console.error('Error deleting student image:', err);
+                }
+
+                console.log('Student and image deleted successfully.');
+                res.status(200).json({ message: 'Student and image deleted successfully' });
+            });
         });
     });
 });

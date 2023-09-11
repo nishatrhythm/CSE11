@@ -150,9 +150,9 @@ function preventContextMenu(event) {
     event.preventDefault();
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    showModal('This is a test modal that appears when the page loads.', 'info');
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     showModal('This is a test modal that appears when the page loads.', 'info');
+// });
 
 // Function to view a student's details
 function viewStudent(studentId) {
@@ -172,8 +172,37 @@ function editStudent(studentId) {
     window.location.href = `/form.html?editId=${studentNumber}`;
 }
 
+// Function to delete a student's data
 function deleteStudent(studentId) {
-    // Implement your logic for deleting a student's record
+    // Extract the last two characters (student number) from the studentId
+    const studentNumber = studentId.substr(-2);
+
+    // Show a confirmation modal
+    showModal('Are you sure you want to delete this student?', 'delete');
+
+    // Handle the "Confirm" button click to delete the student
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn');
+
+    modalConfirmBtn.addEventListener('click', () => {
+        // Send a request to the server to delete the student and their image
+        fetch(`/delete-student/${studentNumber}`, {
+            method: 'DELETE',
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.message === 'Student deleted successfully') {
+                    // Reload the page to reflect the updated student list
+                    location.reload();
+                } else {
+                    console.error('Error deleting student:', data.error);
+                    // Handle the error accordingly
+                }
+            })
+            .catch((error) => {
+                console.error('Error deleting student:', error);
+                // Handle the error accordingly
+            });
+    });
 }
 
 // Call the fetchAndDisplayStudents function when the page loads
