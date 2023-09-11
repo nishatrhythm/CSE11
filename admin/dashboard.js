@@ -88,6 +88,71 @@ function fetchAndDisplayStudents() {
         });
 }
 
+// Function to display the custom modal with a message and an icon
+function showModal(message, alertType) {
+    const modal = document.getElementById('customModal');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalCancelBtn = document.getElementById('modalCancelBtn'); // New Cancel button
+    const modalConfirmBtn = document.getElementById('modalConfirmBtn'); // New Confirm button
+    const body = document.querySelector('body');
+
+    // Set the modal content based on the alert type
+    switch (alertType) {
+        case 'success':
+            modalIcon.className = 'fa fa-check-circle';
+            modalIcon.style.color = 'green';
+            break;
+        case 'error':
+            modalIcon.className = 'fa fa-triangle-exclamation';
+            modalIcon.style.color = 'orange';
+            break;
+        default:
+            modalIcon.className = 'fa-solid fa-trash';
+            modalIcon.style.color = 'red';
+    }
+
+    modalMessage.textContent = message;
+
+    // Display the modal in the vertical center of the screen
+    modal.style.display = 'flex';
+
+    // Add the class to the body element to prevent scrolling
+    body.classList.add('modal-open');
+
+    // Disable right-clicking while the modal is open
+    document.addEventListener('contextmenu', preventContextMenu);
+
+    // Handle the "Cancel" button click to close the modal and re-enable scrolling
+    modalCancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+
+        // Remove the 'modal-open' class to re-enable scrolling
+        document.body.classList.remove('modal-open');
+
+        // Remove the contextmenu event listener
+        document.removeEventListener('contextmenu', preventContextMenu);
+    });
+
+    // Handle the "Confirm" button click (you can add your custom logic here)
+    modalConfirmBtn.addEventListener('click', () => {
+        // Add your logic for the Confirm button here
+        // For example, perform an action or submit a form
+        // Then close the modal as needed
+        modal.style.display = 'none';
+
+        // Remove the 'modal-open' class to re-enable scrolling
+        document.body.classList.remove('modal-open');
+
+        // Remove the contextmenu event listener
+        document.removeEventListener('contextmenu', preventContextMenu);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    showModal('This is a test modal that appears when the page loads.', 'info');
+});
+
 // Function to view a student's details
 function viewStudent(studentId) {
     // Extract the last two characters (student number) from the studentId

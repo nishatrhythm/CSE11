@@ -323,6 +323,41 @@
     background-color: #0056b3;
 }
 
+#modalCancelBtn {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #007BFF;
+    font-weight: 500;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 120px;
+    letter-spacing: 3px;
+    margin-right: 10px;
+}
+
+#modalCancelBtn:hover {
+    background-color: #0056b3;
+    border: 2px solid #0056b3;
+}
+
+#modalConfirmBtn {
+    color: red;
+    background-color: transparent;
+    border: 2px solid red;
+    font-weight: 500;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 120px;
+    letter-spacing: 3px;
+}
+
+#modalConfirmBtn:hover {
+    background-color: red;
+    color: #fff;
+}
+
 .error-message {
     color: orange; /* Set the text color to orange for error messages */
 }
