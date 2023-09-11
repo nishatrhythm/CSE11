@@ -712,8 +712,13 @@ updateStudentButton.addEventListener("click", async function (event) {
             console.log("Student data updated successfully");
             // Display a modal alert
             showModal("Student data updated successfully.", 'success');
-            // Redirect to the dashboard or perform other actions as needed
-            window.location.href = "/dashboard";
+
+            // Handle the "Okay" button click to redirect to the dashboard
+            const modalOkayBtn = document.getElementById('modalOkayBtn');
+            modalOkayBtn.addEventListener('click', () => {
+                // Redirect to the dashboard or perform other actions as needed
+                window.location.href = "/dashboard";
+            });
         } else {
             // Update failed, handle errors here
             console.error("Failed to update student data");
@@ -918,7 +923,7 @@ addStudentButton.addEventListener("click", async function (event) {
             // Hide the error message
             imageError.style.display = 'none';
         });
-        
+
         return; // Prevent further form submission
     }
 
@@ -1007,8 +1012,13 @@ addStudentButton.addEventListener("click", async function (event) {
             console.log("Student data added successfully");
             // Display a modal alert
             showModal("Student data added successfully.", 'success');
-            // Redirect to the dashboard or perform other actions as needed
-            window.location.href = "/dashboard";
+            
+            // Handle the "Okay" button click to redirect to the dashboard
+            const modalOkayBtn = document.getElementById('modalOkayBtn');
+            modalOkayBtn.addEventListener('click', () => {
+                // Redirect to the dashboard or perform other actions as needed
+                window.location.href = "/dashboard";
+            });
         } else {
             // Update failed, handle errors here
             console.error("Failed to add student data");
