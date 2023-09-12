@@ -9,10 +9,20 @@ function createStudentCard(student) {
     const card = document.createElement("div");
     card.classList.add("student-card");
 
+    // Create a new container div for the image with a 16:9 aspect ratio
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("student-image-container");
+
+    // Set the aspect ratio using padding-bottom
+    imageContainer.style.paddingBottom = "64.1%"; /* 750/1170 = 64.1% ------- 1170*750 size image */
+
     const image = document.createElement("img");
     image.classList.add("student-image");
     image.src = `/images/${student.id}.jpg`;
     image.alt = student.name;
+
+    // Append the image to the image container
+    imageContainer.appendChild(image);
 
     const name = document.createElement("h2");
     name.classList.add("student-name");
@@ -67,7 +77,8 @@ function createStudentCard(student) {
         socialLinks.appendChild(link);
     });
 
-    card.appendChild(image);
+    // Append the image container, name, id, infoTable, and socialLinks to the card
+    card.appendChild(imageContainer);
     card.appendChild(name);
     card.appendChild(id);
     card.appendChild(infoTable);

@@ -94,10 +94,21 @@ body {
     backdrop-filter: blur(5px);
 }
 
-/* Style for student image within the card */
+/* Style for the image container with a 16:9 aspect ratio */
+.student-image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 9/16 = 56.25% for 16:9 aspect ratio */
+}
+
+/* Style for student image within the container */
 .student-image {
-    max-width: 100%;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover container */
     border-radius: 10px;
 }
 
