@@ -5,8 +5,8 @@ const multer = require('multer');
 const app = express();
 const port = 3000;
 
-// Serve static files (CSS, JavaScript, etc.) from the "admin" directory
-app.use(express.static(path.join(__dirname)));
+// Serve static files (CSS, JavaScript, etc.) from the directory where your files are located
+app.use(express.static(__dirname));
 
 // Middleware to parse JSON in request body
 app.use(express.json());
@@ -20,9 +20,10 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// Serve students.json from the CSE11 directory
+// Serve students.json from the directory where your files are located
 app.get('/students.json', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'students.json'));
+    const studentsJsonPath = path.join(__dirname, 'students.json');
+    res.sendFile(studentsJsonPath);
 });
 
 // Create a storage engine for multer to specify where to save the uploaded image
@@ -49,7 +50,7 @@ app.post('/add-student-image/:studentId', upload.single('studentImage'), (req, r
 app.post('/add-student', async (req, res) => {
     try {
         const newStudentData = req.body;
-        const filePath = path.join(__dirname, '..', 'students.json');
+        const filePath = path.join(__dirname, 'students.json');
 
         // Read the existing students data from 'students.json'
         const data = fs.readFileSync(filePath, 'utf8');
@@ -87,7 +88,7 @@ app.post('/update-student', (req, res) => {
     const updatedStudentData = req.body;
 
     // Read the existing students data from 'students.json'
-    const filePath = path.join(__dirname, '..', 'students.json');
+    const filePath = path.join(__dirname, 'students.json');
 
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
@@ -124,7 +125,7 @@ app.delete('/delete-student/:studentId', (req, res) => {
     const studentId = req.params.studentId;
 
     // Delete the student from 'students.json'
-    const filePath = path.join(__dirname, '..', 'students.json');
+    const filePath = path.join(__dirname, 'students.json');
 
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
