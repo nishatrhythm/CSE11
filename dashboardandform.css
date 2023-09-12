@@ -160,26 +160,22 @@
 /* Custom Tooltip */
 .custom-tooltip {
     position: absolute;
-    background-color: orange;
-    /* Warning-type background color */
-    color: #fff;
-    /* Text color */
+    background-color: orange; /* Warning-type background color */
+    color: #fff; /* Text color */
     border-radius: 4px;
     padding: 6px 10px;
     font-size: 14px;
     font-weight: 400;
     z-index: 1000;
     pointer-events: none;
-    white-space: normal;
-    /* Allow multiple lines of text */
+    white-space: normal; /* Allow multiple lines of text */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    /* Adjust the maximum width as needed */
-    word-wrap: break-word;
-    /* Allow long words to wrap */
-    line-height: 1.5;
-    /* Add line-height for the gap between lines */
-    /* text-align: justify; */
+    max-width: 400px; /* Adjust the maximum width as needed */
+    word-wrap: break-word; /* Allow long words to wrap */
+    line-height: 1.5; /* Add line-height for the gap between lines */
+    opacity: 0; /* Initially set the opacity to 0 (hidden) */
+    transition: opacity 0.5s ease; /* Add a smooth opacity transition */
+    display: none; /* Initially hide the tooltip element */
 }
 
 /* Remove the arrow-style */

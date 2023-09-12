@@ -82,21 +82,41 @@ infoIcon.style.cursor = "pointer"; // Add a pointer cursor to indicate interacti
 // Create a custom tooltip element
 const customTooltip = document.createElement("div");
 customTooltip.className = "custom-tooltip";
-customTooltip.textContent = "Student image should be 1170 x 750. Only .jpg and .jpeg files are allowed. Maximum file size is 2 MB.";
+customTooltip.textContent = "Student images should have a resolution of 1170 x 750 pixels or a proportional ratio. Only .jpg and .jpeg formats are allowed, with a maximum file size of 2 MB.";
 customTooltip.style.display = "none"; // Initially hide the tooltip
 
 // Append the tooltip element to the information icon
 infoIcon.appendChild(customTooltip);
 
-// Add an event listener to show the tooltip on mouseover
-infoIcon.addEventListener("mouseover", function () {
-    customTooltip.style.display = "block"; // Show the tooltip
-});
+let tooltipTimeout; // Initialize a variable to store the timeout reference
 
-// Add an event listener to hide the tooltip on mouseout
-infoIcon.addEventListener("mouseout", function () {
-    customTooltip.style.display = "none"; // Hide the tooltip
-});
+// Function to show the tooltip with a delay
+function showTooltip() {
+    clearTimeout(tooltipTimeout); // Clear any existing timeouts
+
+    // Delay the tooltip display with a timeout
+    tooltipTimeout = setTimeout(function () {
+        customTooltip.style.opacity = "1"; // Show the tooltip with a 500ms transition
+        customTooltip.style.display = "block"; // Show the tooltip element
+    }, 50); // Delay the transition by 50ms
+}
+
+// Function to hide the tooltip with a delay
+function hideTooltip() {
+    clearTimeout(tooltipTimeout); // Clear any existing timeouts
+    customTooltip.style.opacity = "0"; // Hide the tooltip by setting opacity to 0
+
+    // Delay hiding the tooltip element with a timeout
+    tooltipTimeout = setTimeout(function () {
+        customTooltip.style.display = "none"; // Hide the tooltip element after the transition
+    }, 500); // Match the transition duration (500ms)
+}
+
+// Add an event listener to show the tooltip on mouseover with a delay
+infoIcon.addEventListener("mouseover", showTooltip);
+
+// Add an event listener to hide the tooltip on mouseout with a delay
+infoIcon.addEventListener("mouseout", hideTooltip);
 
 // Append the information icon to the imageLabelDiv
 imageLabelDiv.appendChild(infoIcon);
