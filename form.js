@@ -396,14 +396,24 @@ function populateFormFieldsView(student) {
     const fileInput = document.getElementById("studentImage");
     fileInput.style.display = "none";
 
-    // Create a thumbnail of the student image
+    // Create a container div for the student image with a custom aspect ratio
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("student-image-container");
+
+    // Set the aspect ratio using padding-bottom (e.g., 60% for a custom ratio)
+    imageContainer.style.paddingBottom = "60%"; // Adjust the percentage as needed
+
+    // Create the student image
     const thumbnail = document.createElement("img");
     thumbnail.src = `/images/${student.id}.jpg`; // Assuming your image files are named based on student IDs
     thumbnail.alt = "Student Image";
     thumbnail.className = "student-thumbnail";
 
-    // Append the thumbnail to the form
-    form.insertBefore(thumbnail, socialLinksDiv);
+    // Append the image to the container
+    imageContainer.appendChild(thumbnail);
+
+    // Append the container to the form
+    form.insertBefore(imageContainer, socialLinksDiv);
 
     // Hide the information icon and tooltip
     const infoIcon = document.querySelector(".warning-icon");
@@ -1019,7 +1029,7 @@ addStudentButton.addEventListener("click", async function (event) {
             console.log("Student data added successfully");
             // Display a modal alert
             showModal("Student data added successfully.", 'success');
-            
+
             // Handle the "Okay" button click to redirect to the dashboard
             const modalOkayBtn = document.getElementById('modalOkayBtn');
             modalOkayBtn.addEventListener('click', () => {

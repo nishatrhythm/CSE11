@@ -254,10 +254,19 @@
 }
 
 /* In your styles.css or inside a <style> element in your HTML */
+.student-image-container {
+    position: relative;
+    width: 100%;
+}
+
 .student-thumbnail {
-    max-width: 200px; /* Adjust this value as needed */
-    height: auto; /* Maintain aspect ratio */
-    ;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover; /* Maintain aspect ratio and cover container */
 }
 
 /* Modal Styles */
