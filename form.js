@@ -165,6 +165,7 @@ addStudentButtonDiv.className = "form-group";
 
 const addStudentButton = document.createElement("button");
 addStudentButton.type = "submit";
+addStudentButton.id = "addStudentButton";
 addStudentButton.className = "btn btn-primary";
 addStudentButton.textContent = "Add Student";
 
@@ -181,6 +182,7 @@ updateStudentButtonDiv.className = "form-group";
 
 const updateStudentButton = document.createElement("button");
 updateStudentButton.type = "submit";
+updateStudentButton.id = "updateStudentButton";
 updateStudentButton.className = "btn btn-primary";
 updateStudentButton.textContent = "Update Student";
 updateStudentButton.style.display = "none"; // Initially hidden
@@ -195,6 +197,7 @@ editStudentButtonDiv.className = "form-group mt-5";
 const editStudentButton = document.createElement("button");
 editStudentButton.type = "button"; // Change the button type to "button"
 editStudentButton.className = "btn btn-primary";
+editStudentButton.id = "editStudentButton";
 editStudentButton.textContent = "Edit This Student";
 editStudentButton.style.display = "none"; // Initially hidden
 
