@@ -161,9 +161,7 @@
 .custom-tooltip {
     position: absolute;
     background-color: orange;
-    /* Warning-type background color */
     color: #fff;
-    /* Text color */
     border-radius: 4px;
     padding: 6px 10px;
     font-size: 14px;
@@ -171,20 +169,13 @@
     z-index: 1000;
     pointer-events: none;
     white-space: normal;
-    /* Allow multiple lines of text */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     max-width: 400px;
-    /* Adjust the maximum width as needed */
     word-wrap: break-word;
-    /* Allow long words to wrap */
     line-height: 1.5;
-    /* Add line-height for the gap between lines */
     opacity: 0;
-    /* Initially set the opacity to 0 (hidden) */
     transition: opacity 0.5s ease;
-    /* Add a smooth opacity transition */
     display: none;
-    /* Initially hide the tooltip element */
 }
 
 /* Remove the arrow-style */
@@ -476,10 +467,14 @@ textarea:hover {
         margin-right: 10%;
         margin-left: 10%;
     }
+
+    .custom-tooltip {
+        max-width: 350px;
+    }
 }
 
 @media screen and (max-width: 767px) {
-    .polite-background {
+        .polite-background {
         margin-right: 5%;
         margin-left: 5%;
     }
@@ -487,28 +482,43 @@ textarea:hover {
     h2 {
         font-size: 20px;
     }
-}
 
-@media screen and (max-width: 499px) {
-    .polite-background {
-        padding: 20px;
-        margin-right: 2%;
-        margin-left: 2%;
-    }
-
-    .social-links-table td {
-        padding: 0px;
-        text-align: center;
-    }
-
-    .polite-background label {
-        font-size: 14px;
+    .custom-tooltip {
+        max-width: 270px;
     }
 }
 
-@media screen and (max-width: 685px) {
+@media screen and (min-width: 670px) and (max-width: 767px) {
+    .navbar {
+        padding: 0 100px;
+    }
+}
 
-    /* Navbar styles with animated gradient background */
+@media screen and (min-width: 526px) and (max-width: 669px) {
+    .custom-tooltip {
+        max-width: 320px;
+    }
+}
+
+@media screen and (min-width: 453px) and (max-width: 526px) {
+    .custom-tooltip {
+        max-width: 250px;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 453px) {
+    .custom-tooltip {
+        max-width: 200px;
+    }
+}
+
+@media screen and (min-width: 340px) and (max-width: 400px) {
+    .custom-tooltip {
+        max-width: 180px;
+    }
+}
+
+@media screen and (max-width: 670px) {
     .navbar {
         padding: 0 20px;
     }
@@ -531,5 +541,31 @@ textarea:hover {
     .nav-button {
         font-size: 16px;
         padding: 10px 20px;
+    }
+
+    .polite-background {
+        padding: 20px;
+        margin-right: 2%;
+        margin-left: 2%;
+    }
+
+    .social-links-table td {
+        padding: 0px;
+        text-align: center;
+    }
+
+    .polite-background label {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    .nav-button {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    h2 {
+        font-size: 16px;
     }
 }
