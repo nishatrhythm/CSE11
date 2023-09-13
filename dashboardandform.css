@@ -81,12 +81,19 @@
     text-align: center;
 }
 
+#studentTable tbody tr td:nth-child(1),
+#studentTable tbody tr td:nth-child(2),
+#studentTable tbody tr td:nth-child(3) {
+    vertical-align: middle;
+}
+
 /* Add this CSS to add some margin between the buttons in the "Actions" column */
 #studentTable tbody tr td:nth-child(3) .btn {
     margin-right: 10px;
-    /* Adjust the margin as needed to control the spacing between buttons */
+    margin-bottom: 3px;
+    margin-top: 3px;
+    text-align: center;
     width: 65px;
-    /* Set a specific width for the buttons */
 }
 
 /* Add this to your styles.css file or within a <style> tag in the HTML document */
@@ -559,10 +566,19 @@ textarea:hover {
     }
 }
 
+@media screen and (max-width: 408px) {
+    #modalCancelBtn,  #modalConfirmBtn {
+        width: 85px;
+        letter-spacing: 0;
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+}
+
 @media screen and (max-width: 310px) {
     .nav-button {
         font-size: 12px;
-        padding: 5px 8px;
+        padding: 5px 10px;
     }
 
     h2 {
