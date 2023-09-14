@@ -346,7 +346,7 @@ body {
 
 /* Style for the search container */
 .search-container {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 10px !important;
