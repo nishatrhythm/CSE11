@@ -18,7 +18,7 @@ function createStudentCard(student) {
 
     const image = document.createElement("img");
     image.classList.add("student-image");
-    image.src = `/images/${student.id}.jpg`;
+    image.src = `/CSE11/images/${student.id}.jpg`;
     image.alt = student.name;
 
     // Append the image to the image container
