@@ -339,15 +339,16 @@ async function fetchAndGenerateStudentCards() {
                     // Add an event listener to the modal "Okay" button to scroll to the input field
                     const modalOkayBtn = document.getElementById('modalOkayBtn');
                     modalOkayBtn.addEventListener('click', () => {
-                        // Set the Search Input field border red
-                        searchInput.focus(); // Focus on the Search Input field
-                        searchInput.classList.add("red-border");
+                        // Set the Search Input field border red after the delay
+                        setTimeout(() => {
+                            searchInput.focus(); // Focus on the Search Input field
+                            searchInput.classList.add("red-border");
 
-                        // Customize the #searchInput outline color
-                        searchInput.style.outlineColor = "red";
+                            // Customize the #searchInput outline color
+                            searchInput.style.outlineColor = "red";
 
-                        // Scroll to the Search Container when the modal "Okay" button is clicked
-                        scrollToElement(searchInput);
+                            scrollToElement(searchInput); // Scroll to the Search Input field
+                        }, 200);
                     });
 
                     // Add an input event listener to remove the red border when the user starts typing again
