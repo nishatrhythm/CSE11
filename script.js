@@ -333,9 +333,31 @@ async function fetchAndGenerateStudentCards() {
 
                     updatePaginationButtons();
                 } else {
-                    // If no matching students found, display a message or handle it as needed
                     // Display a modal alert
                     showModal("Your query did not bring any results.", 'error');
+
+                    // Add an event listener to the modal "Okay" button to scroll to the input field
+                    const modalOkayBtn = document.getElementById('modalOkayBtn');
+                    modalOkayBtn.addEventListener('click', () => {
+                        // Set the Search Input field border red
+                        searchInput.focus(); // Focus on the Search Input field
+                        searchInput.classList.add("red-border");
+
+                        // Customize the #searchInput outline color
+                        searchInput.style.outlineColor = "red";
+
+                        // Scroll to the Search Container when the modal "Okay" button is clicked
+                        scrollToElement(searchInput);
+                    });
+
+                    // Add an input event listener to remove the red border when the user starts typing again
+                    searchInput.addEventListener('input', function () {
+                        searchInput.classList.remove("red-border"); // Remove the red border
+
+                        // Reset #searchInput outline color to its original state
+                        searchInput.style.outlineColor = "#3498db";
+                        searchInput.focus();
+                    });
                 }
             } else {
                 // If the search input is empty, add the "shaky" class for animation
