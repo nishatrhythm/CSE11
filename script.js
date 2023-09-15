@@ -23,7 +23,7 @@ function createStudentCard(student) {
     image.src = `/CSE11/images/${student.id}.jpg`;
 
     // for localhost image link 
-    image.src = `/images/${student.id}.jpg`;
+    // image.src = `/images/${student.id}.jpg`;
 
     image.alt = student.name;
 
