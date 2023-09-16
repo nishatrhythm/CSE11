@@ -800,21 +800,24 @@ addStudentButton.addEventListener("click", async function (event) {
     const studentId = document.getElementById("id").value;
 
     // Check if the student ID is empty or contains only the common part
-    if (!studentId || studentId.trim() === "B1903050") {
-        // Set the student ID input field in red
-        const studentIdInput = document.getElementById('id');
-        studentIdInput.style.border = '3px solid red';
-
-        // Set the placeholder text to indicate that the field is required and make it red
-        studentIdInput.placeholder = 'This field is required';
-        studentIdInput.style.color = 'red';
-
+    // and also check if the id does not match the expected format
+    // !/^\d{2}$/.test(studentId) ----- change the value "2" like the substr(-2) in dashboard.js
+    if (!studentId || studentId.trim() === "B1903050" || !/^\d{2}$/.test(studentId)) {
         // Display a modal alert
         showModal("Please enter a valid student ID.", 'error');
 
         // Add an event listener to the modal "Okay" button to scroll to the input field
         const modalOkayBtn = document.getElementById('modalOkayBtn');
         modalOkayBtn.addEventListener('click', () => {
+            // Set the student ID input field in red
+            const studentIdInput = document.getElementById('id');
+            studentIdInput.style.border = '3px solid red';
+
+            // Set the placeholder text to indicate that the field is required and make it red
+            studentIdInput.placeholder = 'This field is required';
+            studentIdInput.style.setProperty('--placeholder-color', 'red');
+            studentIdInput.style.color = 'red';
+
             // Scroll to the student ID input field when the modal "Okay" button is clicked
             scrollToElement(studentIdInput);
 
@@ -839,16 +842,17 @@ addStudentButton.addEventListener("click", async function (event) {
     const idExists = await isStudentIdExists(studentId);
 
     if (idExists) {
-        // Set the student ID input field in red
-        const studentIdInput = document.getElementById('id');
-        studentIdInput.style.border = '3px solid red';
-
         // Display a modal alert
         showModal("The student ID already exists! Please either input data for a different ID or remove this student ID's data from the dashboard.", 'error');
 
         // Add an event listener to the modal "Okay" button to scroll to the input field
         const modalOkayBtn = document.getElementById('modalOkayBtn');
         modalOkayBtn.addEventListener('click', () => {
+            // Set the student ID input field in red
+            const studentIdInput = document.getElementById('id');
+            studentIdInput.style.border = '3px solid red';
+            studentIdInput.style.color = 'red';
+
             // Scroll to the student ID input field when the modal "Okay" button is clicked
             scrollToElement(studentIdInput);
 
@@ -890,12 +894,12 @@ addStudentButton.addEventListener("click", async function (event) {
             studentNameInput.style.border = '';
 
             // Remove the red placeholder text
-            studentNameInput.style.color = ''; // Reset the text color
+            studentNameInput.style.setProperty('--placeholder-color', '');
             studentNameInput.placeholder = 'This field is required';
         });
 
         // Set the placeholder text to indicate that the field is required and make it red
-        studentNameInput.style.color = 'red';
+        studentNameInput.style.setProperty('--placeholder-color', 'red');
         studentNameInput.placeholder = 'This field is required';
 
         // Focus on the input field

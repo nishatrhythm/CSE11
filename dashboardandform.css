@@ -201,6 +201,11 @@
     /* You can adjust the color code as needed */
 }
 
+#id::placeholder,
+#name::placeholder {
+    color: var(--placeholder-color); /* Use the custom property for the placeholder text color */
+}
+
 /* Add a media query for smaller screens to stack social links vertically */
 @media (max-width: 768px) {
     .social-links-table td {
