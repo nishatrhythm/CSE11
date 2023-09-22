@@ -334,7 +334,7 @@ async function fetchAndGenerateStudentCards() {
                     updatePaginationButtons();
                 } else {
                     // Display a modal alert
-                    showModal("Your query did not bring any results.", 'error');
+                    showModal("Your query did not bring up any results.", 'error');
 
                     // Add an event listener to the modal "Okay" button to scroll to the input field
                     const modalOkayBtn = document.getElementById('modalOkayBtn');
