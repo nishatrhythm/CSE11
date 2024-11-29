@@ -218,8 +218,8 @@ body {
 }
 
 .custom-social-links a:nth-child(2) {
-    color: #1da1f2;
-    /* Twitter color */
+    color: #000000;
+    /* X brand color (black) */
 }
 
 .custom-social-links a:nth-child(3) {

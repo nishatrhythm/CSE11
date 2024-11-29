@@ -145,13 +145,13 @@ socialLinksTable.className = "social-links-table";
 
 // Create a new table row for each social link
 const facebookRow = createSocialLinkRow("Facebook", "facebook");
-const twitterRow = createSocialLinkRow("Twitter", "twitter");
+const xRow = createSocialLinkRow("X", "x");
 const linkedinRow = createSocialLinkRow("LinkedIn", "linkedin");
 const githubRow = createSocialLinkRow("GitHub", "github");
 
 // Append the rows to the table
 socialLinksTable.appendChild(facebookRow);
-socialLinksTable.appendChild(twitterRow);
+socialLinksTable.appendChild(xRow);
 socialLinksTable.appendChild(linkedinRow);
 socialLinksTable.appendChild(githubRow);
 
@@ -266,7 +266,14 @@ function createSocialLinkRow(labelText, inputName) {
     const iconSpan = document.createElement("span");
     iconSpan.className = "input-group-text";
     const icon = document.createElement("i");
-    icon.className = "fab fa-" + inputName;
+
+    // Special handling for "x" to use "fa-brands fa-x-twitter"
+    if (inputName === "x") {
+        icon.className = "fa-brands fa-x-twitter";
+    } else {
+        icon.className = "fab fa-" + inputName;
+    }
+
     iconSpan.appendChild(icon);
     inputGroupPrepend.appendChild(iconSpan);
 
@@ -310,7 +317,7 @@ function fetchAndDisplayViewStudent() {
                     document.getElementById('college').value = student.college;
                     document.getElementById('hometown').value = student.hometown;
                     document.getElementById('facebook').value = student.socialLinks.facebook;
-                    document.getElementById('twitter').value = student.socialLinks.twitter;
+                    document.getElementById('x').value = student.socialLinks.x;
                     document.getElementById('linkedin').value = student.socialLinks.linkedin;
                     document.getElementById('github').value = student.socialLinks.github;
                 } else {
@@ -351,10 +358,9 @@ function fetchAndDisplayEditStudent() {
                     document.getElementById('college').value = student.college;
                     document.getElementById('hometown').value = student.hometown;
                     document.getElementById('facebook').value = student.socialLinks.facebook;
-                    document.getElementById('twitter').value = student.socialLinks.twitter;
+                    document.getElementById('x').value = student.socialLinks.x;
                     document.getElementById('linkedin').value = student.socialLinks.linkedin;
                     document.getElementById('github').value = student.socialLinks.github;
-                    ;
                 } else {
                     console.error('Student not found.');
                 }
@@ -403,9 +409,9 @@ function populateFormFieldsView(student) {
     facebookInput.value = student.socialLinks.facebook;
     facebookInput.disabled = true;
 
-    const twitterInput = document.getElementById("twitter");
-    twitterInput.value = student.socialLinks.twitter;
-    twitterInput.disabled = true;
+    const xInput = document.getElementById("x");
+    xInput.value = student.socialLinks.x;
+    xInput.disabled = true;
 
     const linkedinInput = document.getElementById("linkedin");
     linkedinInput.value = student.socialLinks.linkedin;
@@ -576,7 +582,7 @@ updateStudentButton.addEventListener("click", async function (event) {
     const hometown = document.getElementById("hometown").value || "No data available";
     const imageFile = document.getElementById("studentImage").files[0]; // Get the selected image file
     const facebook = document.getElementById("facebook").value || "";
-    const twitter = document.getElementById("twitter").value || "";
+    const x = document.getElementById("x").value || "";
     const linkedin = document.getElementById("linkedin").value || "";
     const github = document.getElementById("github").value || "";
 
@@ -731,7 +737,7 @@ updateStudentButton.addEventListener("click", async function (event) {
         hometown: hometown,
         socialLinks: {
             facebook: facebook,
-            twitter: twitter,
+            x: x,
             linkedin: linkedin,
             github: github,
         },
@@ -880,7 +886,7 @@ addStudentButton.addEventListener("click", async function (event) {
     const hometown = document.getElementById("hometown").value || "No data available";
     const imageFile = document.getElementById("studentImage").files[0]; // Get the selected image file
     const facebook = document.getElementById("facebook").value || "";
-    const twitter = document.getElementById("twitter").value || "";
+    const x = document.getElementById("x").value || "";
     const linkedin = document.getElementById("linkedin").value || "";
     const github = document.getElementById("github").value || "";
 
@@ -1035,7 +1041,7 @@ addStudentButton.addEventListener("click", async function (event) {
         hometown: hometown,
         socialLinks: {
             facebook: facebook,
-            twitter: twitter,
+            x: x,
             linkedin: linkedin,
             github: github,
         },

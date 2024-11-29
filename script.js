@@ -66,19 +66,22 @@ function createStudentCard(student) {
     const socialLinks = document.createElement("div");
     socialLinks.classList.add("social-links", "custom-social-links");
 
-    const socialIcons = ["facebook", "twitter", "linkedin", "github"];
+    const socialIcons = ["facebook", "x", "linkedin", "github"];
 
     socialIcons.forEach((icon) => {
         let socialLink = student.socialLinks[icon];
+
         if (icon === "linkedin") {
             socialLink = `https://www.linkedin.com/in/${socialLink}`;
+        } else if (icon === "x") {
+            socialLink = `https://www.x.com/${socialLink}`;
         } else {
             socialLink = `https://www.${icon}.com/${socialLink}`;
         }
 
         const link = document.createElement("a");
         link.href = socialLink;
-        link.innerHTML = `<i class="fab fa-${icon}"></i>`;
+        link.innerHTML = `<i class="fa-brands ${icon === "x" ? "fa-x-twitter" : `fa-${icon}`}"></i>`;
         link.target = "_blank"; // Open link in a new tab
         socialLinks.appendChild(link);
     });
